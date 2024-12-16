@@ -3,7 +3,8 @@ import * as atlas from "azure-maps-control";
 import "azure-maps-control/dist/atlas.min.css";
 import { Button, Col, Input, Row } from "reactstrap";
 
-const subscriptionKey ="B4KsuUEC2SiY60gpredNw0zz8IFJvTaKgUBj2WpCAudhNRczlSIuJQQJ99ALAC8vTInNpgzmAAAgAZMP1uvz";
+const subscriptionKey =
+  "7fusj80fNBUdtY4Y1m5qL3MfXq0tWOPjzeopPFMe4NTXn7aHKjULJQQJ99ALACYeBjFSK7XTAAAgAZMP2nFq";
 
 const MapPage = () => {
   const [pinCode, setPinCode] = useState("");
@@ -230,7 +231,6 @@ const MapPage = () => {
       if (data.results.length === 0) {
         setError("No location found for this pin code");
         // Cleanup on invalid pin code
-        removeRoute();
         removeAllMarkers();
         addDefaultMarkers(); // Re-add default markers
         return;
@@ -242,7 +242,6 @@ const MapPage = () => {
 
       // Remove any previous markers and routes
       removeAllMarkers();
-      removeRoute();
 
       // Find nearest city to the pin code
       let nearestCity = majorCities[0];
@@ -308,7 +307,7 @@ const MapPage = () => {
     } catch (err) {
       setError("Error fetching location or route data");
       console.error(err);
-      removeRoute();
+      removeMapElements();
       removeAllMarkers();
       addDefaultMarkers(); // Show default markers on error
     }
@@ -322,7 +321,6 @@ const MapPage = () => {
     setIsDrivingMode(false);
 
     // Remove route and driving markers
-    removeRoute();
     removeAllMarkers();
 
     // Re-add default markers
@@ -347,29 +345,33 @@ const MapPage = () => {
       map.markers.add(marker);
     });
   };
-
-  const removeRoute = () => {
+  const removeMapElements = () => {
+    // Remove route layer if it exists
     if (routeLayer) {
-      map.layers.remove(routeLayer); // Remove the route layer
-      setRouteLayer(null); // Clear the state
+      map.layers.remove(routeLayer);
+      setRouteLayer(null);
     }
-
+  
+    // Remove route data source if it exists
     if (routeDataSource) {
-      map.sources.remove(routeDataSource); // Remove the route data source
-      setRouteDataSource(null); // Clear the state
+      map.sources.remove(routeDataSource);
+      setRouteDataSource(null);
     }
-
-    setRouteCoordinates([]); // Clear route coordinates
+  
+    // Clear route coordinates
+    setRouteCoordinates([]);
     console.log("Route removed successfully");
-  };
-
-  const removeMarker = () => {
+  
+    // Remove markers if they exist
     if (markers.length > 0) {
       const marker = markers.pop();
       map.markers.remove(marker);
       setMarkers([...markers]);
     }
+  
+    console.log("Markers removed successfully");
   };
+  
 
   const removeAllMarkers = () => {
     markers.forEach((marker) => map.markers.remove(marker));
@@ -380,7 +382,7 @@ const MapPage = () => {
     <div className="h-screen">
       <Row className="align-items-center">
         {" "}
-        <Col>
+        <Col xs="auto">
           {" "}
           <Input
             type="text"
@@ -390,47 +392,72 @@ const MapPage = () => {
             className="border border-gray-300 rounded-md px-3 py-2"
           />{" "}
         </Col>{" "}
-        <Col>
+        <Col xs="auto">
           {" "}
-          <Button onClick={searchPinCode} className="mx-2" style={{backgroundColor:"palegreen"}}>
+          <Button
+            onClick={searchPinCode}
+            className="mx-2"
+            style={{
+              backgroundColor: "palegreen",
+              fontSize: "0.875rem",
+              padding: "0.5rem 1rem",
+            }}
+          >
             {" "}
             Search{" "}
           </Button>{" "}
         </Col>{" "}
-        <Col>
-          {" "}
+         {/*<Col xs="auto">
+       
           <Button
             onClick={getDirectionsToNearestCity}
             color="success"
             className="mx-2"
+            style={{ fontSize: "0.875rem", padding: "0.5rem 1rem" }}
           >
-            {" "}
-            Get Directions to Nearest Store Facility{" "}
-          </Button>{" "}
-        </Col>{" "}
+           
+            Get Directions to Nearest Store Facility
+          </Button>
+        </Col>*/}
+        
         {isDrivingMode && (
-          <Col>
+          <Col xs="auto">
             {" "}
-            <Button onClick={stopDrivingMode} color="danger" className="mx-2">
+            <Button
+              onClick={stopDrivingMode}
+              color="danger"
+              className="mx-2"
+              style={{ fontSize: "0.875rem", padding: "0.5rem 1rem" }}
+            >
               {" "}
               Stop Driving Mode{" "}
             </Button>{" "}
           </Col>
         )}{" "}
-        <Col>
+        <Col xs="auto">
           {" "}
-          <Button onClick={removeMarker} color="danger" className="mx-2">
+          <Button
+            onClick={removeMapElements}
+            color="danger"
+            className="mx-2"
+            style={{ fontSize: "0.875rem", padding: "0.5rem 1rem" }}
+          >
             {" "}
-            Remove map markers{" "}
+            Remove map Elements
           </Button>{" "}
         </Col>{" "}
-        <Col>
+        {/* <Col xs="auto">
           {" "}
-          <Button onClick={removeRoute} color="success" className="mx-2">
+          <Button
+            onClick={removeRoute}
+            color="success"
+            className="mx-2"
+            style={{ fontSize: "0.875rem", padding: "0.5rem 1rem" }}
+          >
             {" "}
             Remove routes{" "}
           </Button>{" "}
-        </Col>{" "}
+        </Col>{" "} */}
       </Row>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
