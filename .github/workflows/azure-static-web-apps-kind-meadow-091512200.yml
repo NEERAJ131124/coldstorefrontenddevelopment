@@ -20,11 +20,11 @@ jobs:
           submodules: true
           lfs: false
       - name: Install Dependencies
-        run: npm install --force
+        run: npm run install-deps
       - name: Build And Deploy
         run: |
           npm run build
-          npx @azure/static-web-apps-cli deploy --app-location "/" --output-location "build" --deployment-token ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_KIND_MEADOW_091512200 }}
+          sudo npx @azure/static-web-apps-cli deploy --app-location "/" --output-location "build" --deployment-token ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_KIND_MEADOW_091512200 }} --api-language node --api-version 16
         env:
           AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_KIND_MEADOW_091512200 }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
