@@ -19,7 +19,7 @@ import MapPage from '../../Applications/Maps/Map'
 export default function DefaultDashboard() {
     return (
         <>
-            <Breadcrumbs pageTitle={DefaultDashboardTitle} parent={DashboardTitle} title={DefaultDashboardTitle} paragraph='"Welcome back! Let’s start from where you left."' />
+            {/* <Breadcrumbs pageTitle={DefaultDashboardTitle} parent={DashboardTitle} title={DefaultDashboardTitle} paragraph='"Welcome back! Let’s start from where you left."' /> */}
             <Container className='default-dashboard' fluid>
                 <Row>
                     {/* <WelcomeBanner />

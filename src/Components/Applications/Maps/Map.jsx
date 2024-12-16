@@ -379,8 +379,8 @@ const MapPage = () => {
   };
 
   return (
-    <div className="h-screen">
-      <Row className="align-items-center">
+    <div className="h-screen" >
+      <Row className="align-items-center" style={{marginTop:"10px"}}>
         {" "}
         <Col xs="auto">
           {" "}
