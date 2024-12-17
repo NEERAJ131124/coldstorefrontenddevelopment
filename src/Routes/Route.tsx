@@ -122,6 +122,8 @@ import FaclityList from "../Pages/Facility/FacilityList";
 import AddCountry from "../Pages/Applications/LocationManager/Country";
 import AddState from "../Pages/Applications/LocationManager/State";
 import ViewFacilityDetails from "../Pages/Facility/FacilityList/ViewFacility";
+import PrivacyPolicy from "../Components/Pages/Others/Authentication/PrivacyPolicy/Index";
+import StorageLocator from "../Components/Applications/Maps/Map";
 
 
 
@@ -261,20 +263,12 @@ export const routes = [
     { path: `${process.env.PUBLIC_URL}/facility/add`, element: <AddFacility /> },
     { path: `${process.env.PUBLIC_URL}/facility/view`, element: <FaclityList /> },
     { path: `${process.env.PUBLIC_URL}/facility/add`, element: <AddFacility /> },
-<<<<<<< .mine
-||||||| .r26
-    { path: `${process.env.PUBLIC_URL}/map/storagelocator`, element: <StorageLocator /> },
-    { path: `${process.env.PUBLIC_URL}/privacypolicy`, element: <PrivacyPolicy /> },
-
-
-=======
     { path: `${process.env.PUBLIC_URL}/facility/details/:id`, element: <ViewFacilityDetails /> },
 
     { path: `${process.env.PUBLIC_URL}/map/storagelocator`, element: <StorageLocator /> },
     { path: `${process.env.PUBLIC_URL}/privacypolicy`, element: <PrivacyPolicy /> },
 
 
->>>>>>> .r28
     // { path: `${process.env.PUBLIC_URL}/location/country`, element: <AddCountry /> },
     // { path: `${process.env.PUBLIC_URL}/location/state`, element: <AddState /> },
 

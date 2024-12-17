@@ -3,14 +3,7 @@ import * as atlas from "azure-maps-control";
 import "azure-maps-control/dist/atlas.min.css";
 import { Button, Col, Input, Row } from "reactstrap";
 
-<<<<<<< .mine
-const subscriptionKey =
-  "7fusj80fNBUdtY4Y1m5qL3MfXq0tWOPjzeopPFMe4NTXn7aHKjULJQQJ99ALACYeBjFSK7XTAAAgAZMP2nFq";
-||||||| .r26
-const subscriptionKey ="B4KsuUEC2SiY60gpredNw0zz8IFJvTaKgUBj2WpCAudhNRczlSIuJQQJ99ALAC8vTInNpgzmAAAgAZMP1uvz";
-=======
 const subscriptionKey = "B4KsuUEC2SiY60gpredNw0zz8IFJvTaKgUBj2WpCAudhNRczlSIuJQQJ99ALAC8vTInNpgzmAAAgAZMP1uvz";
->>>>>>> .r28
 
 const MapPage = () => {
   const [pinCode, setPinCode] = useState("");
@@ -387,56 +380,13 @@ const MapPage = () => {
   return (
     <div className="h-screen" >
       <Row className="align-items-center" style={{marginTop:"10px"}}>
-<<<<<<< .mine
-        {" "}
-        <Col xs="auto">
-          {" "}
-||||||| .r26
-        {" "}
-        <Col>
-          {" "}
-=======
         <Col sm={2}>
->>>>>>> .r28
           <Input
             type="text"
             value={pinCode}
             onChange={(e) => setPinCode(e.target.value)}
             placeholder="Enter Pin Code"
             className="border border-gray-300 rounded-md px-3 py-2"
-<<<<<<< .mine
-          />{" "}
-        </Col>{" "}
-        <Col xs="auto">
-          {" "}
-          <Button
-            onClick={searchPinCode}
-            className="mx-2"
-            style={{
-              backgroundColor: "palegreen",
-              fontSize: "0.875rem",
-              padding: "0.5rem 1rem",
-            }}
-          >
-            {" "}
-            Search{" "}
-          </Button>{" "}
-        </Col>{" "}
-         {/*<Col xs="auto">
-       
-||||||| .r26
-          />{" "}
-        </Col>{" "}
-        <Col>
-          {" "}
-          <Button onClick={searchPinCode} className="mx-2" style={{backgroundColor:"palegreen"}}>
-            {" "}
-            Search{" "}
-          </Button>{" "}
-        </Col>{" "}
-        <Col>
-          {" "}
-=======
           />
         </Col>
         <Col sm={1}>
@@ -446,39 +396,17 @@ const MapPage = () => {
           </Button>
         </Col>
         <Col sm={3}>
->>>>>>> .r28
           <Button
             onClick={getDirectionsToNearestCity}
             color="success"
             className="mx-2"
             style={{ fontSize: "0.875rem", padding: "0.5rem 1rem" }}
           >
-<<<<<<< .mine
-           
-            Get Directions to Nearest Store Facility
-          </Button>
-        </Col>*/}
-        
-||||||| .r26
-            {" "}
-            Get Directions to Nearest Store Facility{" "}
-          </Button>{" "}
-        </Col>{" "}
-=======
             Direction to Nearest Store Facility
           </Button>
         </Col>
->>>>>>> .r28
         {isDrivingMode && (
-<<<<<<< .mine
-          <Col xs="auto">
-            {" "}
-||||||| .r26
-          <Col>
-            {" "}
-=======
           <Col sm={2}>
->>>>>>> .r28
             <Button
               onClick={stopDrivingMode}
               color="danger"
@@ -488,65 +416,20 @@ const MapPage = () => {
               Stop Driving Mode
             </Button>
           </Col>
-<<<<<<< .mine
-        )}{" "}
-        <Col xs="auto">
-          {" "}
-||||||| .r26
-        )}{" "}
-        <Col>
-          {" "}
-=======
         )}
         <Col sm={2}>
->>>>>>> .r28
           <Button
             onClick={removeMapElements}
             color="danger"
             className="mx-2"
             style={{ fontSize: "0.875rem", padding: "0.5rem 1rem" }}
           >
-<<<<<<< .mine
+
             {" "}
             Remove map Elements
           </Button>{" "}
         </Col>{" "}
-        {/* <Col xs="auto">
-          {" "}
-||||||| .r26
-            {" "}
-            Remove map markers{" "}
-          </Button>{" "}
-        </Col>{" "}
-        <Col>
-          {" "}
-=======
-            Remove map markers
-          </Button>
-        </Col>
-        <Col sm={2}>
->>>>>>> .r28
-          <Button
-            onClick={removeRoute}
-            color="success"
-            className="mx-2"
-            style={{ fontSize: "0.875rem", padding: "0.5rem 1rem" }}
-          >
-<<<<<<< .mine
-            {" "}
-            Remove routes{" "}
-          </Button>{" "}
-        </Col>{" "} */}
-||||||| .r26
-            {" "}
-            Remove routes{" "}
-          </Button>{" "}
-        </Col>{" "}
-=======
-            Remove routes
-          </Button>
-        </Col>
->>>>>>> .r28
+        
       </Row>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div

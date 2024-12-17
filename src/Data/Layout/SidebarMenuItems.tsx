@@ -14,12 +14,6 @@ export const menuItems: SidebarMenuItem[] = [
                 type: "sub",
                 children: [
                     { path: `${process.env.PUBLIC_URL}/dashboard/default`, title: "Default", type: "link" },
-<<<<<<< .mine
-                    // { path: `${process.env.PUBLIC_URL}/dashboard/map`, title: "Map", type: "link" },
-||||||| .r26
-                    { path: `${process.env.PUBLIC_URL}/dashboard/map`, title: "Map", type: "link" },
-=======
->>>>>>> .r28
                     // { path: `${process.env.PUBLIC_URL}/dashboard/education`, title: "Education", type: "link" },
                 ],
             },
