@@ -10,16 +10,11 @@ export const menuItems: SidebarMenuItem[] = [
                 id: 1,
                 icon: "Home-dashboard",
                 badge: true,
-                // badgeName: "3",
+                badgeName: "3",
                 type: "sub",
                 children: [
                     { path: `${process.env.PUBLIC_URL}/dashboard/default`, title: "Default", type: "link" },
-<<<<<<< .mine
-                    // { path: `${process.env.PUBLIC_URL}/dashboard/map`, title: "Map", type: "link" },
-||||||| .r26
                     { path: `${process.env.PUBLIC_URL}/dashboard/map`, title: "Map", type: "link" },
-=======
->>>>>>> .r28
                     // { path: `${process.env.PUBLIC_URL}/dashboard/education`, title: "Education", type: "link" },
                 ],
             },
@@ -29,8 +24,8 @@ export const menuItems: SidebarMenuItem[] = [
                 icon: "star",
                 type: "sub",
                 children: [
-                    { path: `${process.env.PUBLIC_URL}/facility/add`, type: "link", title: "Add Facility" },
                     { path: `${process.env.PUBLIC_URL}/facility/view`, type: "link", title: "View Facility" },
+                    { path: `${process.env.PUBLIC_URL}/facility/add`, type: "link", title: "Add Facility" },
                 ],
             },
             

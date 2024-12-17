@@ -9,7 +9,6 @@ import CenteredModal from './CenteredModal'
 import NestedModal from './NestedModal'
 import StaticModal from './StaticModal'
 import CustomModals from './CustomModals'
-
 export default function ModalContainer() {
     return (
         <>

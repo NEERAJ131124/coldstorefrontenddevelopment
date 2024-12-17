@@ -1,14 +1,18 @@
 import React from 'react'
 import { Col, Row } from 'reactstrap'
-import { Badges, H5, Image, LI, P, ProgressBar, UL } from '../../../../AbstractElements'
-import { dynamicImage } from '../../../../Utils'
-import { CommonFacilityListProps } from '../../../../Types/Facility.type'
+import { Badges, Btn, H5, Image, LI, P, ProgressBar, UL } from '../../../../AbstractElements'
 import { createNameProfileImage } from '../../../../Common/methods'
+import { useNavigate } from 'react-router-dom'
 
 export default function CommonFacilityList({ item }: any) {
-   const handlePayment=()=>{
+    const navigate = useNavigate()
+
+   const handlePayment=()=>{    
       alert("please complete payment")
     }
+    const ViewDetails=(id:any)=>{
+        navigate(`/facility/details/${id}`)
+      }
     return (
         <Col xxl={4} md={6}>
             <div className={`project-box font-dark bg-light-${item.IsActive ? 'success' : 'danger'}`}>
@@ -83,11 +87,10 @@ export default function CommonFacilityList({ item }: any) {
                             </div>
                         ))
                     }
-                    {/* <div className="d-flex align-items-center gap-1 mb-2">
-                        <P className="mb-0">{item.StorageFacilityCapacities[0].StorageTypeId.Type}{'%'}</P>
-                        <P className="mb-0">{item.StorageFacilityCapacities[0].StorageTypeId.Type}{'%'}</P>
-                    </div> */}
-                    <ProgressBar style={{ height: "5px" }} className={`bg-light-${item.IsActive? 'success' : 'danger'}`} striped animated />
+                    <div className='text-end mt-2'>
+                    <Btn color={'success'} onClick={()=>{ViewDetails(item._id)}} >View</Btn>
+                    </div>
+                    {/* <ProgressBar style={{ height: "5px" }} className={`bg-light-${item.IsActive? 'success' : 'danger'}`} striped animated /> */}
                 </div>
             </div>
         </Col>

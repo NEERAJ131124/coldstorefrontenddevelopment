@@ -45,7 +45,29 @@ export const getFacility =async (navigate:any) => {
         toast.error(error.response.data.message);
       }
 }
+ 
+
+
+export const getFacilityDetails =async (id:any,navigate:any) => {
+  try {
+      debugger;
+      const response = await axiosApi.get(`/storagefacility/${id}`,{
+          headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+      });
+      if (response.status !== 200) {
+        throw new Error(`Failed to send OTP: ${response.status}`);
+      }
   
+      return response.data; // Axios automatically parses JSON
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+}
+
+
   
 export async function getStorageType() {
     try {
