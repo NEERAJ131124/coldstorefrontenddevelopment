@@ -75,9 +75,10 @@ export interface GeoLocation {
 
   export interface FacilitySearchResultInitialState {
       allFacilityResult: FacilityListData[];
+      searchText:string;
   }
   
-  
+
 export interface RegisterType {
     description: string;
     title: string;

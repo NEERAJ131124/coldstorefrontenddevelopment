@@ -45,7 +45,7 @@ export const updateFacility =async (data:any,navigate:any,reset:any) => {
     }
 }
 
-export const getAllFacility =async (navigate:any) => {
+export const getAllFacility =async () => {
   try {
       const response = await axiosApi.get(`/storagefacility`,{
       });

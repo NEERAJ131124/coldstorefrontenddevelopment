@@ -23,19 +23,19 @@ export default function EditProfile() {
     const getUser= async()=>{
         const response= await getUserProfile(navigate)
         if(response!=null){
-            console.log("response: ",response.data)
-            setValue('emailAddress',response.data.Email)
-            setValue('phoneNumber',response.data.PhoneNumber)
-            setValue('firstName',response.data.FirstName)
-            setValue('lastName',response.data.LastName)
-            setValue('city',response.data.GeoLocationId.City)
-            setValue('address',response.data.GeoLocationId.StreetAddress)
-            setValue('postalCode',response.data.GeoLocationId.Pincode)
-            setValue('countryname',response.data.GeoLocationId.Country._id)
-            setValue('state',response.data.GeoLocationId.State._id)
-            setCountryId(response.data.GeoLocationId.Country._id)
-            getStateList(response.data.GeoLocationId.Country._id);
-            setStateId(response.data.GeoLocationId.State._id)
+            console.log("response: ",response?.data)
+            setValue('emailAddress',response?.data?.Email)
+            setValue('phoneNumber',response?.data?.PhoneNumber)
+            setValue('firstName',response?.data?.FirstName)
+            setValue('lastName',response?.data?.LastName)
+            setValue('city',response?.data?.GeoLocationId?.City)
+            setValue('address',response?.data?.GeoLocationId?.StreetAddress)
+            setValue('postalCode',response?.data?.GeoLocationId?.Pincode)
+            setValue('countryname',response?.data?.GeoLocationId?.Country._id)
+            setValue('state',response?.data?.GeoLocationId?.State._id)
+            setCountryId(response?.data?.GeoLocationId?.Country._id)
+            getStateList(response?.data?.GeoLocationId?.Country._id);
+            setStateId(response?.data?.GeoLocationId?.State._id)
 
         }
         setIsLoading(false)

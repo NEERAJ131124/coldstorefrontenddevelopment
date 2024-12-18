@@ -29,17 +29,15 @@ export default function Home() {
 
                             {/* Card Body */}
                             <CardBody className="p-4">
-                                {/* Call to Action */}
+                            {/* #308e87 */}
                                 <div className="text-center mb-4">
                                     <P className="fs-5">
                                         <strong>Register now</strong>{' '}
-                                        <span className="badge bg-success text-white fs-6 pointer" onClick={()=>{handleRegister()}} style={{cursor:'pointer'}}>
-                                            Lifetime onboarding fee of 999 INR
+                                        <span className="badge bg-success text-white fs-6 pointer"  onClick={()=>{handleRegister()}} style={{cursor:'pointer'}}>
+                                            Lifetime onboarding fee of 999 INR (Non Refundable)
                                         </span>
                                     </P>
                                 </div>
-
-                                {/* Benefits Section */}
                                 <div className="mb-4">
                                     <H4 className="mb-3">✨ Benefits:</H4>
                                     <ul className="list-unstyled">
@@ -50,7 +48,6 @@ export default function Home() {
                                     </ul>
                                 </div>
 
-                                {/* Coming Soon Features */}
                                 <div className="mt-4">
                                     <H4 className="mb-3 text-warning">🚀 Coming Soon Features:</H4>
                                     <ul className="list-unstyled">

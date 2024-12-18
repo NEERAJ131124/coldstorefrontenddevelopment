@@ -171,3 +171,26 @@ export async function verifyMobileOTP(request: MobileOTPRequest,navigate:any){
   }
   }
 }
+
+
+export async function submitContactUs(request: any){
+  try {
+    debugger;
+    const response = await axiosApi.post('/contact', request);
+    console.log(response)
+    if (response.status !== 200) {
+      throw new Error(`Failed to submit contact: ${response.data.message}`);
+    }
+    else{
+      return response.data
+    }
+  } catch (error: any) {
+    if(error.code==="ERR_NETWORK"){
+      throw new Error('Network Error');
+  }
+  else{
+      console.error('Error fetching :', error);
+      toast.error(error.response.data.message)
+  }
+  }
+}

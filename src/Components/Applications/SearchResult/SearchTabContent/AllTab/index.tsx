@@ -4,12 +4,13 @@ import { SearchResultInitialState } from '../../../../../Types/SearchResult.type
 import PixelstarpSearch from './PixelstarpSearch'
 import BlogBox from './BlogBox'
 import PaginationCard from '../Common/PaginationCard'
+import { FacilitySearchResultInitialState } from '../../../../../Types/Facility.type'
 
-export default function AllTab({ allResult }: SearchResultInitialState) {
+export default function AllTab({ allFacilityResult,searchText }: FacilitySearchResultInitialState) {
     return (
         <Row>
-            <PixelstarpSearch allResult={allResult} />
-            <BlogBox allResult={allResult} />
+            <PixelstarpSearch searchText={searchText} allFacilityResult={allFacilityResult} />
+            {/* <BlogBox allResult={allFacilityResult} /> */}
             <PaginationCard />
         </Row>
     )

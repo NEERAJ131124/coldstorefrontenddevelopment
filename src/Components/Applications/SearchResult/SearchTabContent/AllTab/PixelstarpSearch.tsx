@@ -1,20 +1,23 @@
 import React from 'react'
 import { SearchResultInitialState } from '../../../../../Types/SearchResult.type'
-import { Col } from 'reactstrap'
+import { Col, Label } from 'reactstrap'
 import { H6, LI, P, UL } from '../../../../../AbstractElements'
 import { Href } from '../../../../../Utils/Constants'
+import { FacilitySearchResultInitialState } from '../../../../../Types/Facility.type'
 
-export default function PixelstarpSearch({ allResult }: SearchResultInitialState) {
+export default function PixelstarpSearch({ allFacilityResult,searchText }: FacilitySearchResultInitialState) {
     return (
         <Col xxl={8} xl={6} className="box-col-12">
-            <H6 className="f-w-700">{'Search result for "Pixelstrap"'}</H6>
-            {allResult &&
-                allResult.slice(0, 4).map((item) => (
-                    <div className='info-block' key={item.id}>
-                        <a href={Href}>{item.url}</a>
-                        <H6>{item.title}</H6>
-                        <P>{item.detail}</P>
-                        <div className='star-ratings'>
+            {
+             searchText && <H6 className="f-w-700">{`Search result for "${searchText}"`}</H6>
+            }
+            {allFacilityResult &&
+                allFacilityResult.slice(0, 4).map((item) => (
+                    <div className='info-block' key={item._id}>
+                        {/* <a href={Href}>{item.url}</a> */}
+                        <H6>{item.Name}</H6>
+                        <Label>{(item.GeoLocation.City).toLocaleUpperCase()} | {(item.GeoLocation.State.StateName).toLocaleUpperCase()} | {(item.GeoLocation.Country.CountryName).toLocaleUpperCase()} </Label>
+                        {/* <div className='star-ratings'>
                             <UL className='search-info simple-list flex-row'>
                                 <LI>
                                     <i className='fa-solid fa-star' />
@@ -27,7 +30,7 @@ export default function PixelstarpSearch({ allResult }: SearchResultInitialState
                                 <LI>{item.vote}</LI>
                                 <LI>{item.news}</LI>
                             </UL>
-                        </div>
+                        </div> */}
                     </div>
                 )
                 )}

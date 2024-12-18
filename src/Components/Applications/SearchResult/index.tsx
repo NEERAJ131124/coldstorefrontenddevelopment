@@ -21,7 +21,7 @@ export default function SearchResultContainer() {
                         <Card>
                             <SearchResultHeader searchFacility={searchFacility} />
                             <CardBody>
-                                <SearchNav activeTab={activeTab} setActiveTab={setActiveTab} />
+                                {/* <SearchNav activeTab={activeTab} setActiveTab={setActiveTab} /> */}
                                 <SearchTabContent activeTab={activeTab} searchText={searText??""} />
                             </CardBody>
                         </Card>

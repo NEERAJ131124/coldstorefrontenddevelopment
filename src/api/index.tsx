@@ -2,6 +2,8 @@ const api = `${process.env.PUBLIC_URL}/api`;
 export const ProductApi = `${api}/product.json`;
 export const TodoApi = `${api}/todo.json`;
 export const SearchResultApi = `${api}/searchResult.json`;
+export const FacilitySearchResultApi = `${process.env.REACT_APP_API_URL}/storagefacility`;
+
 export const ContactsApi = `${api}/contacts.json`;
 export const TasksApi = `${api}/tasks.json`;
 export const UserCardsApi = `${api}/user-cards.json`;

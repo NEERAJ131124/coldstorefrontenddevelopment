@@ -6,13 +6,13 @@ import { getAllFacility } from "../../api-service/Facility/Index";
 import { useNavigate } from "react-router-dom";
 import { FacilityListData, FacilitySearchResultInitialState } from "../../Types/Facility.type";
 
-export const fetchSearchData = createAsyncThunk<FacilityListData[], void, {}>("api/searchResult", async () => {
-    const navigate = useNavigate()
-    const response = await getAllFacility(navigate)
+export const fetchFacilitySearchData = createAsyncThunk<FacilityListData[], void, {}>("/storageFacility", async () => {
+    debugger;
+    const response = await getAllFacility()
     return response.data;
 });
 
-const initialState: FacilitySearchResultInitialState = { allFacilityResult: [] };
+const initialState: FacilitySearchResultInitialState = { allFacilityResult: [],searchText: ''};
 
 const FacilitySearchResultSlice = createSlice({
     name: 'results',
@@ -23,7 +23,7 @@ const FacilitySearchResultSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchSearchData.fulfilled, (state, action) => {
+        builder.addCase(fetchFacilitySearchData.fulfilled, (state, action) => {
             state.allFacilityResult = action.payload;
         });
     },

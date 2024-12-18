@@ -3,17 +3,12 @@ import { menuList } from '../../../../Data/Layout/SidebarMenuList';
 import { SearchSuggestionItem, SidebarMenuItem } from '../../../../Types/Layout.type';
 import { Input } from 'reactstrap';
 import ResponsiveSearchList from './ResponsiveSearchList';
-import { getAllFacility } from '../../../../api-service/Facility/Index';
-import { useNavigate } from 'react-router-dom';
-// import { setFacility } from '../../../../ReduxToolkit/Reducers/FacilityReducer';
 
 export default function SearchContainer() {
   const [arr, setArr] = useState<SearchSuggestionItem[]>([]);
   const [searchedWord, setSearchedWord] = useState<string>("");
   const [searchedArray, setSearchedArray] = useState<SearchSuggestionItem[]>([]);
-  const [arrFacility, setArrFacility] = useState<SearchSuggestionItem[]>([]);
 
-const navigate = useNavigate();
   useEffect(() => {
     const suggestionArray: SearchSuggestionItem[] = [];
     const getAllLink = (item: SidebarMenuItem, icon: string | undefined) => {
@@ -33,23 +28,11 @@ const navigate = useNavigate();
     setArr(suggestionArray);
   }, []);
 
-  const getAllFacilities = async ()=>{
-    const response = await getAllFacility(navigate);
-    if(response!=null){
-      setArrFacility(response.data)
-    }
-  }
-
-  // useEffect(() => {
-  //   getAllFacilities()
-  // }, [searchedWord]);
-
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     if (!searchedWord) setSearchedWord("");
     setSearchedWord(e.target.value);
     let data = [...arr];
     let result = data.filter((item) => item.title?.toLowerCase().includes(e.target.value.toLowerCase()));
-    // let result1 = arrFacility.filter((item) => item.title?.toLowerCase().includes(e.target.value.toLowerCase()));
     setSearchedArray(result);
   };
 
@@ -61,7 +44,7 @@ const navigate = useNavigate();
           <i className="search-bg iconly-Search icli" />
         </div>
         <div className={`Typeahead-menu custom-scrollbar ${searchedWord.length ? "is-open" : ""}`} >
-          {/* <ResponsiveSearchList searchedArray={searchedArray} /> */}
+          <ResponsiveSearchList searchedArray={searchedArray} />
         </div>
       </div>
     </div>

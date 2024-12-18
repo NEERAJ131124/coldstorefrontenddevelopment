@@ -22,7 +22,7 @@ const navigate = useNavigate();
   }, []);
 
   const getAllFacilities = async ()=>{
-    const response = await getAllFacility(navigate);
+    const response = await getAllFacility();
     if(response!=null){
       setArrFacility(response.data)
     }
