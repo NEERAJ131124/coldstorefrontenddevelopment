@@ -8,7 +8,7 @@ export default function RegisterWithImageTwo() {
     return (
         <Container fluid className="p-0">
             <Row className="m-0">
-                <Col xl={7} className="login_bs_validation p-0">
+                <Col xl={6} className="login_bs_validation p-0">
                     <Image src={dynamicImage(`login/1.jpg`)} alt='looginpage' className='bg-img-cover bg-center' />
                 </Col>
                 <Col xl={5} className="p-0">

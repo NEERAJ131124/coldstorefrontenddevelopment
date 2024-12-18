@@ -60,7 +60,9 @@ export interface GeoLocation {
     User: string;
     isOwner: boolean;
     Name: string;
-    OperatingHours: string;
+    OpeningTime: string;
+    ClosingTime: string;
+    IsPaid:boolean;
     ContactDetails: string[];
     CreatedOn: string;
     UpdatedOn: string;

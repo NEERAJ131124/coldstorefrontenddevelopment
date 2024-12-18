@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'reactstrap'
 import LoginForm from '../Common/LoginForm'
 
 export default function VisualLogin2() {
+    
     return (
         <Container fluid>
             <Row>

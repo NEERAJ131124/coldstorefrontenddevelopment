@@ -1093,3 +1093,4 @@ export const LayoutTypeTitle: string = "Layout type:";
 
 
 export const FacilityName: string = "Facility Name";
+export const DoPayment: string = "Complete your payment";

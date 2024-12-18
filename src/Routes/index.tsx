@@ -1,13 +1,19 @@
-import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import LayoutRoutes from './LayoutRoutes';
+// import React from 'react'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import LayoutRoutes from './LayoutRoutes'
 import PrivateRoutes from './PrivateRoutes';
+// import SignIn from '../Auth';
 import VisualLogin2 from '../Components/Pages/Others/Authentication/VisualLogin2';
-import Register from '../Components/Pages/Others/Authentication/RegisterWithBgImage'; // Import the Register component
 import { decodeToken } from '../Config/apiConfig';
+import PrivacyPolicy from '../Components/Pages/Others/Authentication/PrivacyPolicy/Index';
+import TermsAndCondition from '../Components/Pages/Others/Authentication/PrivacyPolicy/termsandContitions';
+import RefundPolicy from '../Components/Pages/Others/Authentication/PrivacyPolicy/refundPolicy';
+import RegisterWithImageTwo from '../Components/Pages/Others/Authentication/RegisterWithImageTwo';
+import RegisterWizard from '../Components/Pages/Others/Authentication/RegisterWizard';
+import RegisterSimple from '../Components/Pages/Others/Authentication/RegisterSimple';
 
 export default function Routers() {
-    const token = decodeToken();
+    const token = decodeToken()
 
     return (
         <BrowserRouter basename={'/'}>
@@ -24,8 +30,15 @@ export default function Routers() {
                     <Route path={`/*`} element={<LayoutRoutes />} />
                 </Route>
                 <Route path={`${process.env.PUBLIC_URL}/login`} element={<VisualLogin2 />} />
-                <Route path={`${process.env.PUBLIC_URL}/register`} element={<Register />} /> {/* Add the register route */}
+                <Route path={`${process.env.PUBLIC_URL}/privacypolicy`} element={<PrivacyPolicy />} />
+                <Route path={`${process.env.PUBLIC_URL}/terms`} element={<TermsAndCondition />} />
+                <Route path={`${process.env.PUBLIC_URL}/refundpolicy`} element={<RefundPolicy />} />
+                <Route path={`${process.env.PUBLIC_URL}/register`} element={<RegisterSimple />} />
+
+
+
+
             </Routes>
         </BrowserRouter>
-    );
+    )
 }

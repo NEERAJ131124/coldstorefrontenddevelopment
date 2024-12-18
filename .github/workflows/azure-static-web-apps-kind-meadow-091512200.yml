@@ -14,27 +14,51 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
+    permissions:
+      id-token: write
+      contents: read
     steps:
+      # Checkout the repository
       - uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
+      
+      # Install dependencies with npm install --force
       - name: Install Dependencies
-        run: npm run install-deps
+        run: npm install --force
+
+      # Build the project with CI=false
+      - name: Build the Project
+        run: npm run build-ci
+        env:
+          CI: false
+
+      # Copy routes.json to the build directory
+      - name: Copy routes.json to Build Directory
+        run: cp routes.json build/
+
+      # Deploy to Azure Static Web Apps using the CLI
       - name: Build And Deploy
         run: |
-          npm run build-ci
-          sudo npx @azure/static-web-apps-cli deploy --app-location "/" --output-location "build" --deployment-token ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_KIND_MEADOW_091512200 }} --api-language node --api-version 16
+          sudo npx @azure/static-web-apps-cli deploy \
+            --app-location "/" \
+            --output-location "build" \
+            --deployment-token ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_KIND_MEADOW_091512200 }} \
+            --api-language node \
+            --api-version 16 \
+            --env "production" # Target production environment
         env:
           deployment_environment: production
           AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_KIND_MEADOW_091512200 }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Close Pull Request Job
     steps:
+      # Close preview environment when the pull request is closed
       - name: Close Pull Request
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1

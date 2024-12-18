@@ -50,14 +50,14 @@ export default function FullSearch() {
             <FormGroup className="form-group w-100">
                 <div className="Typeahead Typeahead--twitterUsers">
                     <div className="u-posRelative">
-                        <Input className="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder='Search anything...' name="q" value={searchedWord} onChange={(e) => handleSearch(e)} />
+                        <Input className="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder='Search facility...' name="q" value={searchedWord} onChange={(e) => handleSearch(e)} />
                         <div className="spinner-border Typeahead-spinner" role="status">
                             <span className="sr-only">Loading...</span>
                         </div>
                         <X className="close-search" onClick={searchToggle} />
                     </div>
                     <div className={`Typeahead-menu custom-scrollbar ${searchedWord.length ? "is-open" : ""}`} >
-                        <SearchResult searchedArray={searchedArray} />
+                        {/* <SearchResult searchedArray={searchedArray} /> */}
                     </div>
                 </div>
             </FormGroup>
