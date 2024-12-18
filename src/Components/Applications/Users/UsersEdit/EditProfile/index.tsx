@@ -109,14 +109,14 @@ export default function EditProfile() {
                             <Col sm={6} md={6}>
                                 <FormGroup>
                                     <Label>{EmailAddress}</Label>
-                                    <input className="form-control" type="email" placeholder="Email" {...register('emailAddress', { required: true })} />
+                                    <input className="form-control" type="email" placeholder="Email" disabled {...register('emailAddress', { required: true })} />
                                     {errors.emailAddress && <span style={{ color: 'red' }}>{'EmailAddress is required'} </span>}
                                 </FormGroup>
                             </Col>
                             <Col sm={6} md={6}>
                                 <FormGroup>
                                     <Label>Phone Number</Label>
-                                    <input className="form-control" type="text" placeholder="Phone Number" {...register('phoneNumber', { required: true })} />
+                                    <input className="form-control" type="text" placeholder="Phone Number" disabled {...register('phoneNumber', { required: true })} />
                                     {errors.phoneNumber && <span style={{ color: 'red' }}>{'Phone number is required'} </span>}
                                 </FormGroup>
                             </Col>

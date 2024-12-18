@@ -39,25 +39,10 @@ export default function FacilityListTabContent({ activeTab }: any) {
                             :
                             <div className='text-center'>
                             <span>You haven't added any facility yet. Please add your facility.</span>
-
                             </div>
 }
                         </Row>
                     </TabPane>
-                    {/* <TabPane tabId={2}>
-                        <Row>
-                            {projectListData.map((item, index) =>
-                                item.badge === "Doing" && (<CommonFacilityList item={item} key={index} />)
-                            )}
-                        </Row>
-                    </TabPane>
-                    <TabPane tabId={3}>
-                        <Row>
-                            {projectListData.map((item, index) =>
-                                item.badge === "Done" && (<CommonFacilityList item={item} key={index} />)
-                            )}
-                        </Row>
-                    </TabPane> */}
                 </TabContent>
             </CardBody>
         </Card>

@@ -32,7 +32,7 @@ export default function MyProfile() {
     return (
         <Col xl={12}>
             <Card>
-                {isLoading && <Loader></Loader>}
+           
                 <CommonCardHeader titleClass='card-title' title={MyProfileTitle} />
                 <CardBody>
                     <Form onSubmit={(e) => e.preventDefault()}>
@@ -66,31 +66,31 @@ export default function MyProfile() {
                             <Col sm={6} md={6}>
                                 <FormGroup>
                                     <Label>Street Address</Label>
-                                    <Input type="text" value={userProfile?.GeoLocationId.StreetAddress} disabled />
+                                    <Input type="text" value={userProfile?.GeoLocationId?.StreetAddress} disabled />
                                 </FormGroup>
                             </Col>
                             <Col sm={6} md={6}>
                                 <FormGroup>
                                     <Label>City</Label>
-                                    <Input type="text" value={userProfile?.GeoLocationId.City} disabled />
+                                    <Input type="text" value={userProfile?.GeoLocationId?.City} disabled />
                                 </FormGroup>
                             </Col>
                             <Col sm={6} md={6}>
                                 <FormGroup>
                                     <Label>Pincode</Label>
-                                    <Input type="text" value={userProfile?.GeoLocationId.Pincode} disabled />
+                                    <Input type="text" value={userProfile?.GeoLocationId?.Pincode} disabled />
                                 </FormGroup>
                             </Col>
                             <Col sm={6} md={6}>
                                 <FormGroup>
                                     <Label>Country</Label>
-                                    <Input type="text" value={userProfile?.GeoLocationId.Country.CountryName} disabled />
+                                    <Input type="text" value={userProfile?.GeoLocationId?.Country?.CountryName} disabled />
                                 </FormGroup>
                             </Col>
                             <Col sm={6} md={6}>
                                 <FormGroup>
                                     <Label>State</Label>
-                                    <Input type="text" value={userProfile?.GeoLocationId.State.StateName} disabled />
+                                    <Input type="text" value={userProfile?.GeoLocationId?.State?.StateName} disabled />
                                 </FormGroup>
                             </Col>
                         </Row>

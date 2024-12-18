@@ -21,7 +21,7 @@ export default function ViewFacility() {
     const getFacilityDetail = async (id: any) => {
         const response = await getFacilityDetails(id, navigate)
         if (response != null) {
-            setItem(response.data)
+            setItem(response.data.facility)
         }
     }
     useEffect(() => {
