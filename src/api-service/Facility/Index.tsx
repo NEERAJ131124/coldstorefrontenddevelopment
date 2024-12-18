@@ -3,13 +3,11 @@ import { axiosApi } from "../../Config/apiConfig";
 
 export const submitFacility =async (data:any,navigate:any,reset:any) => {
     try {
-        debugger;
         const response = await axiosApi.post('/storagefacility/add', data,{
             headers: {  
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
               },
         });
-        console.log(response)
         if (response.status !== 201) {
           throw new Error(`Failed to add Facility: ${response.status}`);
         }
@@ -21,19 +19,17 @@ export const submitFacility =async (data:any,navigate:any,reset:any) => {
       } 
       catch (error: any) {
         console.log(error)
-        toast.error(error.response.data.message)    
+        toast.error(error.response.data.message)
       }
 }
 
 export const updateFacility =async (data:any,navigate:any,reset:any) => {
   try {
-      debugger;
       const response = await axiosApi.put(`/storagefacility/${data._id}`, data,{
           headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
       });
-      console.log(response)
       if (response.status !== 201) {
         throw new Error(`Failed to update Facility: ${response.status}`);
       }
@@ -51,7 +47,6 @@ export const updateFacility =async (data:any,navigate:any,reset:any) => {
 
 export const getAllFacility =async (navigate:any) => {
   try {
-      debugger;
       const response = await axiosApi.get(`/storagefacility`,{
       });
       if (response.status !== 200) {
@@ -61,13 +56,12 @@ export const getAllFacility =async (navigate:any) => {
       return response.data; // Axios automatically parses JSON
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response.data.message);
+      // toast.error(error.response.data.message);
     }
 }
 
 export const getFacility =async (navigate:any) => {
     try {
-        debugger;
         const response = await axiosApi.get(`/storagefacility/get`,{
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -80,13 +74,12 @@ export const getFacility =async (navigate:any) => {
         return response.data; // Axios automatically parses JSON
       } catch (error: any) {
         console.log(error);
-        toast.error(error.response.data.message);
+        // toast.error(error.response.data.message);
       }
 }
 
 export const getFacilityDetails =async (id:any,navigate:any) => {
   try {
-      debugger;
       const response = await axiosApi.get(`/storagefacility/${id}`,{
           headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -99,13 +92,12 @@ export const getFacilityDetails =async (id:any,navigate:any) => {
       return response.data; // Axios automatically parses JSON
     } catch (error: any) {
       console.log(error);
-      toast.error(error.response.data.message);
+      // toast.error(error.response.data.message);
     }
 }
 
 export async function getStorageType() {
     try {
-        debugger;
       const response = await axiosApi.get('/storagetype', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -129,7 +121,6 @@ export async function getStorageType() {
   
 export const deleteFacility =async (id:any,navigate:any) => {
   try {
-      debugger;
       const response = await axiosApi.delete(`/storagefacility/${id}`,{
           headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,

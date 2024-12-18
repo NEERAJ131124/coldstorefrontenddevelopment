@@ -9,13 +9,21 @@ export interface LoginRequest {
     Otp: string;
   }
 
-  export interface OTPRegistrationRequest {
+  export interface EmailOTPRequest {
+    Email: string;
+    EmailOtp: string;
+  }
+  
+  export interface MobileOTPRequest {
+    PhoneNumber: string;
+    PhoneOtp: string;
+  }
+
+  export interface RegistrationRequest {
     FirstName:string;
     LastName:string;
     Email: string;
-    Mobile:string;
-    EmailOTP: string;
-    MobileOTP: string;
+    PhoneNumber:string;
   }
 
   export interface RegisterRequest {

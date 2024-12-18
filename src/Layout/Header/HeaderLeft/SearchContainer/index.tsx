@@ -45,13 +45,11 @@ const navigate = useNavigate();
   // }, [searchedWord]);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    debugger;
     if (!searchedWord) setSearchedWord("");
     setSearchedWord(e.target.value);
     let data = [...arr];
     let result = data.filter((item) => item.title?.toLowerCase().includes(e.target.value.toLowerCase()));
     // let result1 = arrFacility.filter((item) => item.title?.toLowerCase().includes(e.target.value.toLowerCase()));
-    // console.log(result1)
     setSearchedArray(result);
   };
 

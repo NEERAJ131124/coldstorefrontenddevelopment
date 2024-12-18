@@ -8,7 +8,10 @@ import { SearchPagesTitle, SearchWebsiteTitle } from '../../../Utils/Constants';
 
 export default function SearchResultContainer() {
     const [activeTab, setActiveTab] = useState(1);
-
+    const [searText,setSearchText]=useState()
+    const searchFacility = (value:any)=>{
+        setSearchText(value)
+    }
     return (
         <>
             <Breadcrumbs pageTitle={SearchWebsiteTitle} parent={SearchPagesTitle} title={SearchWebsiteTitle} />
@@ -16,10 +19,10 @@ export default function SearchResultContainer() {
                 <Row>
                     <Col sm={12}>
                         <Card>
-                            <SearchResultHeader />
+                            <SearchResultHeader searchFacility={searchFacility} />
                             <CardBody>
                                 <SearchNav activeTab={activeTab} setActiveTab={setActiveTab} />
-                                <SearchTabContent activeTab={activeTab} />
+                                <SearchTabContent activeTab={activeTab} searchText={searText??""} />
                             </CardBody>
                         </Card>
                     </Col>

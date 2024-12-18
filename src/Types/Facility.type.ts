@@ -72,6 +72,11 @@ export interface GeoLocation {
     __v: number;
     StorageFacilityCapacities: StorageFacilityCapacity[];
   }
+
+  export interface FacilitySearchResultInitialState {
+      allFacilityResult: FacilityListData[];
+  }
+  
   
 export interface RegisterType {
     description: string;

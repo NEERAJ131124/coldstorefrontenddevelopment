@@ -5,7 +5,6 @@ import { CountryRequest, StateRequest } from '../apiTypes/locationTypes';
 // Service to send OTP
 export async function addCountry(request: CountryRequest,navigate:any) {
   try {
-    debugger;
     const response = await axiosApi.post('/country', request,{
         headers: {  
             Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -85,7 +84,6 @@ export async function deleteCountry(id:any,navigate:any) {
 // Service to send OTP
 export async function addState(request: StateRequest,navigate:any) {
   try {
-    debugger
     const response = await axiosApi.post('/states', request,{
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,

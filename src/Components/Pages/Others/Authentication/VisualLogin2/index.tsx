@@ -1,10 +1,14 @@
 import React from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import LoginForm from '../Common/LoginForm'
+import Footer from '../../../../../Layout/Footer'
+import AuthHeader from '../../../../../Layout/AuthHeader/Index'
 
 export default function VisualLogin2() {
-    
+
     return (
+        <>
+        <AuthHeader/>
         <Container fluid>
             <Row>
                 <Col xl={5} className='login_two_image' />
@@ -15,5 +19,8 @@ export default function VisualLogin2() {
                 </Col>
             </Row>
         </Container>
+        <Footer/>
+        </>
+
     )
 }

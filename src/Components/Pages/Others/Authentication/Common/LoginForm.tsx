@@ -11,6 +11,7 @@ import CommonLogo from "./CommonLogo";
 import { FormGroup } from "reactstrap";
 import { toast } from "react-toastify";
 import { sendOTP, verifyOTP } from "../../../../../api-service/Auth/Index";
+import { Loader } from "react-feather";
 
 const LoginForm = ( { logoClass }: LoginFormProp) => {
   const navigate = useNavigate();
@@ -33,13 +34,13 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
   
   const handleSubmit = async (values: typeof initialValues) => {
     try {
-      debugger;
       if (isOTP) {
         // Send OTP API call
         const requestData = {
           Email: values.email, // Email field from the form
         };
         const response = await sendOTP(requestData);
+        console.log(response)
         toast.success("OTP sent successfully!");
         setIsOTP(false); // Show OTP field after sending OTP
       } 
@@ -53,13 +54,14 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
       }
     } catch (error) {
       console.error(error);
+      
     }
   };
-  
+
   return (
     <div>
-      <CommonLogo logoClass={logoClass} />
       <div className="login-main">
+      <CommonLogo logoClass={logoClass} />
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -67,7 +69,7 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
         >
           {({ isSubmitting }) => (
             <Form className="theme-form">
-              <H3>{"Sign In to Your Account"}</H3>
+              <H3>{"Login to your account"}</H3>
               <P>{"Using OTP"}</P>
               <FormGroup>
                 <Field
@@ -89,18 +91,20 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
                   <ErrorMessage name="otp" component="div" className="text-danger" />
                 </FormGroup>
               )}  
+              <div>
+              
+              </div>
               <div className="text-end mt-3">
                 <Btn color="primary" block className="w-100" disabled={isSubmitting}>
                   {isOTP ? "Send OTP" : "Verify OTP"}
                 </Btn>
-           
               </div>
               <div className="mt-3" >
-              I agree with your  <Link to={'/terms'}><u>Terms of Service</u></Link> & <Link to={'/privacypolicy'}><u>Privacy Policy</u></Link>
-                </div>
-                <div className="mt-3 text-center">
-                                Don't have an account? <Link to="/register">Register</Link>
-                              </div>
+                  By continuing, I agree with your <Link to={'/terms'}><u>Terms of Service</u></Link> & <Link to={'/privacypolicy'}><u>Privacy Policy</u>.</Link>
+              </div>
+              <div className="mt-3 text-center">
+                    Don't have an account? <Link to="/register">Register</Link>
+              </div>
             </Form>
           )}
         </Formik>
@@ -164,7 +168,6 @@ export default LoginForm;
 
 //   const handleSubmit = async (values: typeof initialValues) => {
 //     try {
-//       debugger;
 //       if (isOTP) {
 //         const requestData = {
 //           Email: values.email,

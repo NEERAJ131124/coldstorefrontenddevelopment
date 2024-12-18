@@ -8,15 +8,24 @@ import AllTab from './AllTab';
 import ImageTab from './ImageTab';
 import VideoTab from './VideoTab';
 
-export default function SearchTabContent({ activeTab }: SearchTabContentProp) {
+interface ExtendedSearchTabContentProp extends SearchTabContentProp {
+    searchText: string; // Add searchText to props
+}
+
+
+export default function SearchTabContent({ activeTab ,searchText}: ExtendedSearchTabContentProp) {
     const { allResult } = useSelector((state: RootState) => state.searchResult);
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => { dispatch(fetchSearchData()); }, [dispatch]);
 
+    console.log(allResult);
+    const searchResult = allResult.filter((item) => item.title?.toLowerCase().includes(searchText.toLowerCase()));
+    console.log(searchResult);
+
     return (
         <TabContent activeTab={activeTab}>
             <TabPane className='search-links' tabId={1}>
-                <AllTab allResult={allResult} />
+                <AllTab allResult={searchResult} />
             </TabPane>
             <TabPane tabId={2}>
                 <ImageTab />

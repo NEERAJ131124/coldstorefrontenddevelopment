@@ -18,7 +18,6 @@ export default function AddState() {
         try {
             const response = await getCountry(navigate);
             setCountryList(response.data);
-            console.log(response.data)
         } catch (error) {
             console.error('Failed to fetch countries:', error);
         }

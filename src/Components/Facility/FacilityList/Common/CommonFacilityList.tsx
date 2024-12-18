@@ -13,6 +13,9 @@ export default function CommonFacilityList({ item }: any) {
     const ViewDetails=(id:any)=>{
         navigate(`/facility/details/${id}`)
       }
+      const updateFacility=(id:any)=>{
+        navigate(`/facility/add/${id}`)
+      }
     return (
         <Col xxl={4} md={6}>
             <div className={`project-box font-dark bg-light-${item.IsActive ? 'success' : 'danger'}`}>
@@ -88,7 +91,8 @@ export default function CommonFacilityList({ item }: any) {
                         ))
                     }
                     <div className='text-end mt-2'>
-                    <Btn color={'success'} onClick={()=>{ViewDetails(item._id)}} >View</Btn>
+                    <Btn color={'success'} className='me-2' onClick={()=>{ViewDetails(item._id)}} >View</Btn>
+                    <Btn color={'success'} onClick={()=>{updateFacility(item._id)}} >Update</Btn>
                     </div>
                     {/* <ProgressBar style={{ height: "5px" }} className={`bg-light-${item.IsActive? 'success' : 'danger'}`} striped animated /> */}
                 </div>

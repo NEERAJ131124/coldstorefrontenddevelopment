@@ -20,8 +20,6 @@ export default function UserWrap() {
     }
         const getUser= async()=>{
             const response= await getUserProfile(navigate)
-            debugger;
-            console.log("edit user: " + response)
             if(response!=null){
                 setUser(response.data)
             }

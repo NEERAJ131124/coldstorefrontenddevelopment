@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import * as atlas from "azure-maps-control";
 import "azure-maps-control/dist/atlas.min.css";
 import { Button, Col, Input, Row } from "reactstrap";
+import { getAllFacility } from "../../../api-service/Facility/Index";
+import { useNavigate } from "react-router-dom";
 
 const subscriptionKey = "B4KsuUEC2SiY60gpredNw0zz8IFJvTaKgUBj2WpCAudhNRczlSIuJQQJ99ALAC8vTInNpgzmAAAgAZMP1uvz";
 
@@ -16,13 +18,33 @@ const MapPage = () => {
   const [routeCoordinates, setRouteCoordinates] = useState([]);
   const [isDrivingMode, setIsDrivingMode] = useState(false);
   const drivingIntervalRef = useRef(null);
+  const [arrFacility, setArrFacility] = useState([]);
   // Predefined major cities of India with coordinates
+  const navigate= useNavigate()
+
   const majorCities = [
-    { name: "Delhi", coordinates: [77.209, 28.6139] },
+    { name: "", coordinates: [77.209, 28.6139] },
     { name: "Mumbai", coordinates: [72.8777, 19.076] },
     { name: "Kolkata", coordinates: [88.3639, 22.5726] },
     { name: "Chennai", coordinates: [80.2707, 13.0827] },
   ];
+
+  const getAllFacilities = async () => {
+    const response = await getAllFacility(navigate);
+    if (response != null) {
+
+      const coldtstorages=[]
+      response.data.forEach((item)=>{
+        coldtstorages.push({name: item.Name, coordinates:[item.GeoLocation.Latitude,item.GeoLocation.Longitude]})
+      })
+
+      setArrFacility(coldtstorages)
+    }
+  }
+
+  useEffect(() => {
+    getAllFacilities()
+  }, []);
 
   useEffect(() => {
     const mapInstance = new atlas.Map("map", {
@@ -35,7 +57,8 @@ const MapPage = () => {
     });
 
     mapInstance.events.add("ready", () => {
-      majorCities.forEach((city) => {
+      debugger;
+      majorCities.length> 0 &&  majorCities.forEach((city) => {
         const marker = new atlas.HtmlMarker({
           htmlContent: `<div className="relative" >
                       <div class='city-name' style="font-weight: bold; color: red; background-color: white; padding-inline: 4px; margin-top: 8px;">${city.name}</div>
@@ -101,7 +124,7 @@ const MapPage = () => {
     try {
       const userLocation = await getUserLocation();
 
-      let nearestCity = majorCities.reduce((prev, curr) => {
+      let nearestCity =majorCities.length>0 && majorCities.reduce((prev, curr) => {
         const prevDistance = calculateDistance(userLocation, prev.coordinates);
         const currDistance = calculateDistance(userLocation, curr.coordinates);
         return prevDistance < currDistance ? prev : curr;
@@ -176,7 +199,6 @@ const MapPage = () => {
           } else {
             try {
               const currentLocation = await getUserLocation();
-              console.log("Current location:", currentLocation);
               console.log("Current route point:", routeCoords[currentIndex]);
 
               if (
@@ -333,7 +355,7 @@ const MapPage = () => {
 
   const addDefaultMarkers = () => {
     // Add major city markers
-    majorCities.forEach((city) => {
+    majorCities.length>0 && majorCities.forEach((city) => {
       const marker = new atlas.HtmlMarker({
         htmlContent: `<div className="relative">
                         <div class='city-name' style="font-weight: bold; color: red; background-color: white; padding-inline: 4px; margin-top: 8px;">${city.name}</div>

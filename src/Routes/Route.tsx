@@ -18,7 +18,6 @@ import MasonryGalleryDescription from "../Pages/Miscellaneous/Gallery/MasonryGal
 import Knowledgebase from "../Pages/Miscellaneous/Knowledgebase";
 import GalleryDescription from "../Pages/Miscellaneous/Gallery/GalleryDescription";
 import GalleryGrid from "../Pages/Miscellaneous/Gallery/GalleryGrid";
-import SamplePage from "../Pages/Pages/SamplePage";
 import API from "../Pages/Tables/DataTables/API";
 import AdvanceInit from "../Pages/Tables/DataTables/AdvanceInit";
 import BasicInit from "../Pages/Tables/DataTables/BasicInit";
@@ -119,11 +118,12 @@ import Education from "../Pages/Dashboard/Education";
 
 import AddFacility from "../Pages/Facility/AddFacility";
 import FaclityList from "../Pages/Facility/FacilityList";
+
 import AddCountry from "../Pages/Applications/LocationManager/Country";
 import AddState from "../Pages/Applications/LocationManager/State";
-import ViewFacilityDetails from "../Pages/Facility/FacilityList/ViewFacility";
-import PrivacyPolicy from "../Components/Pages/Others/Authentication/PrivacyPolicy/Index";
 import StorageLocator from "../Components/Applications/Maps/Map";
+import PrivacyPolicy from "../Components/Pages/Others/Authentication/PrivacyPolicy/Index";
+import ViewFacilityDetails from "../Pages/Facility/FacilityList/ViewFacility";
 
 
 
@@ -188,7 +188,6 @@ export const routes = [
     { path: `${process.env.PUBLIC_URL}/table/data_table/advance_init`, element: <AdvanceInit /> },
     { path: `${process.env.PUBLIC_URL}/table/data_table/api`, element: <API /> },
     { path: `${process.env.PUBLIC_URL}/table/data_table/data_sources`, element: <DataSource /> },
-    { path: `${process.env.PUBLIC_URL}/pages/sample_page`, element: <SamplePage /> },
     { path: `${process.env.PUBLIC_URL}/forms/forms_layout/form_wizard_2`, element: <FormWizard2 /> },
     { path: `${process.env.PUBLIC_URL}/forms/forms_layout/two_factor`, element: <TwoFactor /> },
     { path: `${process.env.PUBLIC_URL}/table/reactstrap_table/basic_table`, element: <BasicTables /> },
@@ -262,11 +261,13 @@ export const routes = [
 
     { path: `${process.env.PUBLIC_URL}/facility/add`, element: <AddFacility /> },
     { path: `${process.env.PUBLIC_URL}/facility/view`, element: <FaclityList /> },
-    { path: `${process.env.PUBLIC_URL}/facility/add`, element: <AddFacility /> },
+    { path: `${process.env.PUBLIC_URL}/facility/add/:id`, element: <AddFacility /> },
     { path: `${process.env.PUBLIC_URL}/facility/details/:id`, element: <ViewFacilityDetails /> },
 
     { path: `${process.env.PUBLIC_URL}/map/storagelocator`, element: <StorageLocator /> },
     { path: `${process.env.PUBLIC_URL}/privacypolicy`, element: <PrivacyPolicy /> },
+    
+
 
 
     // { path: `${process.env.PUBLIC_URL}/location/country`, element: <AddCountry /> },

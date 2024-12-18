@@ -33,13 +33,11 @@ const navigate = useNavigate();
   }, [searchedWord]);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    debugger;
     if (!searchedWord) setSearchedWord("");
     setSearchedWord(e.target.value);
     let data = [...arr];
     // let result = data.filter((item) => item.Name?.toLowerCase().includes(e.target.value.toLowerCase()));
     let result1 = arrFacility.filter((item) => item.Name?.toLowerCase().includes(e.target.value.toLowerCase()) || item.GeoLocation.Country.CountryName?.toLowerCase().includes(e.target.value.toLowerCase()) || item.GeoLocation.City?.toLowerCase().includes(e.target.value.toLowerCase()));
-    console.log(result1)
     setSearchedArray(result1);
   };
 

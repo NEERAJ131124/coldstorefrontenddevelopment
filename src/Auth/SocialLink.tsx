@@ -8,7 +8,6 @@ import { useMsal } from '@azure/msal-react';
 export default function SocialLink() {
     const { instance } = useMsal();
     const handleLogin = () => {
-        debugger;
         // if (loginType === "popup") {
             instance.loginPopup(loginRequest).catch((e) => console.log(e));
         // } 

@@ -14,7 +14,7 @@ import ProjectReducer from "./Reducers/ProjectReducer";
 import JobSearchReducer from "./Reducers/JobSearchReducer";
 import ThemeCustomizerReducer from "./Reducers/Layout/ThemeCustomizerReducer";
 import FacilityReducer from "./Reducers/FacilityReducer";
-
+import FacilitySearchReducer from "./Reducers/FacilitySearchReducer"
 export const store = configureStore({
     reducer: {
         layout: LayoutReducer,
@@ -22,6 +22,7 @@ export const store = configureStore({
         filter: FilterReducer,
         todos: TodoReducer,
         searchResult: SearchResultReducer,
+        facilitySearchResult: FacilitySearchReducer,
         contact: ContactReducer,
         tasks: TasksReducer,
         email: EmailReducer,

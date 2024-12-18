@@ -11,11 +11,9 @@ export default function FacilitySearchList({ searchedArray }: SearchSuggestionLi
                     <div className="ProfileCard-details">
                         <div className="ProfileCard-realName d-flex">
                             <div>
-                                {item.Name}  | {item.GeoLocation.City} | {item.GeoLocation.Country.CountryName}
+                                {item.Name}  | {item.GeoLocation.City} | {item.GeoLocation.Country.CountryName} 
                             </div>
-
                         </div>
-
                     </div>
                     <div className="text-end me-2">
                         <Btn className={'text-end me-2'}>View</Btn>

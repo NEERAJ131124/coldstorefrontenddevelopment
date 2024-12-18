@@ -19,11 +19,9 @@ export default function ViewFacility() {
     };
     const navigate = useNavigate();
     const getFacilityDetail = async (id: any) => {
-        debugger;
         const response = await getFacilityDetails(id, navigate)
         if (response != null) {
             setItem(response.data)
-            console.log(response)
         }
     }
     useEffect(() => {

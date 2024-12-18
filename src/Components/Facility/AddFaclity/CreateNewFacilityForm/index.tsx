@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Col, Form, FormGroup, Input, Row } from "reactstrap";
 import { Btn, H5, P } from "../../../../AbstractElements";
 import { Cancel, Select } from "../../../../Utils/Constants";
-import { getStorageType, submitFacility } from "../../../../api-service/Facility/Index";
+import { getFacilityDetails, getStorageType, submitFacility } from "../../../../api-service/Facility/Index";
 import { getCountry, getStateByCountryId } from "../../../../api-service/Location/Index";
 import { getCurrentLocation } from "../../../../Common/methods";
 import { toast } from "react-toastify";
+import { FacilityListData } from "../../../../Types/Facility.type";
 
 interface FacilityFormData {
     isOwner: boolean;
@@ -32,7 +33,8 @@ interface FacilityFormData {
 }
 
 export default function CreateNewFacilityForm() {
-
+    const { id } = useParams();
+    const [item, setItem] = useState<FacilityListData | null>(null);
     const { register, handleSubmit, formState: { errors }, setValue, clearErrors, watch } = useForm<FacilityFormData>();
     const navigate = useNavigate();
     const [stateId, setStateId] = useState("");
@@ -52,6 +54,41 @@ export default function CreateNewFacilityForm() {
             setStorageTypes(response.data)
         }
     }
+
+    const getFacilityDetail = async (id: any) => {
+            const response = await getFacilityDetails(id, navigate)
+            if (response != null) {
+                // setValue('isOwner', response.data.I);
+                setValue('Name', response.data.Name);
+                setValue('OpeningTime', response.data.OpeningTime);
+                setValue('ClosingTime', response.data.ClosingTime);
+                setValue('ContactDetails.0', response.data.ContactDetails[0]);
+                setValue('ContactDetails.1', response.data.ContactDetails[1]);
+                setValue('GeoLocationData.StreetAddress', response.data.GeoLocation.StreetAddress);
+                setValue('GeoLocationData.District', response.data.GeoLocation.District);
+                setValue('GeoLocationData.City', response.data.GeoLocation.City);
+                setValue('GeoLocationData.State', response.data.GeoLocation.State._id);
+                setValue('GeoLocationData.Country', response.data.GeoLocation.Country);
+                setValue('GeoLocationData.Pincode', response.data.GeoLocation.Pincode);
+                setStateId(response.data.GeoLocation.Country._id)
+                setStateId(response.data.GeoLocation.State._id)
+
+                // setValue('StorageCapacities', response.data.StorageCapacities);
+                // setValue('StorageTypeId', '');
+                // setValue('StorageCapacity', '');
+                // setValue('CapacityUnit', 'Tons');
+                // setStorageTypeList(response.data.StorageCapacities);
+                setStorageTypeListCopy(response.data.StorageCapacities);
+            }
+        }
+        useEffect(() => {
+            if(id){
+                getFacilityDetail(id)
+            }
+            else{
+                resetForm();
+            }
+        }, [id])
 
     const resetForm = () => {
         setValue('isOwner', false);
@@ -99,7 +136,6 @@ export default function CreateNewFacilityForm() {
 
 
     const addFacility = async (data: any) => {
-        debugger;
         const location = await getCurrentLocation();
         data.StorageCapacities = storagetypeListCopy;
         data.GeoLocationData.Latitude = location.latitude;
@@ -113,7 +149,6 @@ export default function CreateNewFacilityForm() {
         setStorageCap('');
     }
     const addStorageType = async (data: any) => {
-        debugger;
         if (storageCap == '' || StorageTypeId == '') {
             toast.error("Storage Type and capacity are required.")
             return;
@@ -383,6 +418,7 @@ export default function CreateNewFacilityForm() {
                             className="form-control"
                             type="number"
                             placeholder="Storage Capacity"
+                            min={0}
                             onChange={(e) => { setStorageCap(e.target.value) }}
                             value={storageCap}
                         />

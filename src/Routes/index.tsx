@@ -11,6 +11,8 @@ import RefundPolicy from '../Components/Pages/Others/Authentication/PrivacyPolic
 import RegisterWithImageTwo from '../Components/Pages/Others/Authentication/RegisterWithImageTwo';
 import RegisterWizard from '../Components/Pages/Others/Authentication/RegisterWizard';
 import RegisterSimple from '../Components/Pages/Others/Authentication/RegisterSimple';
+import HomePage from '../Pages/Pages/Home';
+import ContactUs from '../Components/Pages/Others/Authentication/ContactUs/Index';
 
 export default function Routers() {
     const token = decodeToken()
@@ -34,8 +36,8 @@ export default function Routers() {
                 <Route path={`${process.env.PUBLIC_URL}/terms`} element={<TermsAndCondition />} />
                 <Route path={`${process.env.PUBLIC_URL}/refundpolicy`} element={<RefundPolicy />} />
                 <Route path={`${process.env.PUBLIC_URL}/register`} element={<RegisterSimple />} />
-
-
+                <Route path={`${process.env.PUBLIC_URL}/home`} element={<HomePage />} />
+                <Route path={`${process.env.PUBLIC_URL}/contactus`} element={<ContactUs />} />
 
 
             </Routes>

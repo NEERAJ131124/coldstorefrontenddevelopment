@@ -22,8 +22,6 @@ export default function EditProfile() {
    
     const getUser= async()=>{
         const response= await getUserProfile(navigate)
-        debugger;
-        console.log("edit user: " + response)
         if(response!=null){
             console.log("response: ",response.data)
             setValue('emailAddress',response.data.Email)
@@ -94,7 +92,6 @@ export default function EditProfile() {
             IsActive: true,
             IsDeleted: false
         }
-        console.log("data: ",request)
         await updateUserProfile(request,navigate);
     };
 

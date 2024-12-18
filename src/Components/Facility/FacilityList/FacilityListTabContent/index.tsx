@@ -5,7 +5,6 @@ import CommonFacilityList from '../Common/CommonFacilityList';
 import { RootState } from '../../../../ReduxToolkit/Store';
 import { getFacility } from '../../../../api-service/Facility/Index';
 import { useNavigate } from 'react-router-dom';
-import { CommonFacilityListProps, FacilityListDataProp } from '../../../../Types/Facility.type';
 import Loader from '../../../../Layout/Loader';
 
 export default function FacilityListTabContent({ activeTab }: any) {
@@ -17,14 +16,12 @@ export default function FacilityListTabContent({ activeTab }: any) {
     const getFacilityList = async () => {
         const response = await getFacility(navigate)
         if (response) {
-            console.log("storage: ", response.data)
             setFacilities(response.data)
         } else {
             console.log("Failed to fetch facility list")
         }
         setIsLoading(false)
     }
-
 
     useEffect(() => {
         getFacilityList();

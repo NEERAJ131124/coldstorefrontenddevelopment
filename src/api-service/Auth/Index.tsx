@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 import { axiosApi } from '../../Config/apiConfig';
-import { LoginRequest, OTPRequest, LoginResponse, RegisterRequest, OTPRegistrationRequest } from '../apiTypes/authTypes';
+import { LoginRequest, OTPRequest, LoginResponse, RegisterRequest, RegistrationRequest, MobileOTPRequest, EmailOTPRequest } from '../apiTypes/authTypes';
 import axios from 'axios';
 
 const sendSMS = async () => {
@@ -36,8 +36,8 @@ const sendSMS = async () => {
 export async function sendOTP(request: LoginRequest): Promise<LoginResponse> {
   try {
     // sendSMS();
-    debugger;
     const response = await axiosApi.post<LoginResponse>('/login/login-or-signup', request);
+    console.log(response)
     if (response.status !== 200) {
       throw new Error(`Failed to send OTP: ${response.status}`);
     }
@@ -48,6 +48,7 @@ export async function sendOTP(request: LoginRequest): Promise<LoginResponse> {
   }
   else{
       console.error('Error fetching :', error);
+      toast.error(error.response.data.message)
       throw new Error('Network Error');
   }
   }
@@ -57,8 +58,9 @@ export async function sendSignUpOTP(request: RegisterRequest) {
   try {
     // sendSMS();
     debugger;
-    const response = await axiosApi.post('/login/signup', request);
-    if (response.status !== 200) {
+    const response = await axiosApi.post('/user/register', request);
+    console.log(response)
+    if (response.status != 201) {
       throw new Error(`Failed to send OTP: ${response.status}`);
     }
     return response.data; // Axios automatically parses JSON
@@ -68,7 +70,8 @@ export async function sendSignUpOTP(request: RegisterRequest) {
   }
   else{
       console.error('Error fetching :', error);
-      throw new Error('Network Error');
+      toast.error(error.response.data.message)
+
   }
   }
 }
@@ -76,9 +79,7 @@ export async function sendSignUpOTP(request: RegisterRequest) {
 // Service to verify OTP
 export async function verifyOTP(request: OTPRequest,navigate:any){
   try {
-    debugger;
-    const response = await axiosApi.post('/login/verify-otp', request);
-
+    const response = await axiosApi.post(`${process.env.REACT_APP_API_URL}/login/verify-otp`, request);
     if (response.status !== 200) {
       throw new Error(`Failed to verify OTP: ${response.status}`);
     }
@@ -88,6 +89,7 @@ export async function verifyOTP(request: OTPRequest,navigate:any){
       navigate(`${process.env.PUBLIC_URL}/dashboard/default`);
     }
   } catch (error: any) {
+    console.log(error)
     if(error.code==="ERR_NETWORK"){
       throw new Error('Network Error');
   }
@@ -98,11 +100,10 @@ export async function verifyOTP(request: OTPRequest,navigate:any){
   }
 }
 
-export async function verifySignUpOTP(request: OTPRegistrationRequest,navigate:any){
+export async function submitSignUp(request: RegistrationRequest,navigate:any){
   try {
-    debugger;
-    const response = await axiosApi.post('/login/verify-signup-otp', request);
-
+    const response = await axiosApi.post('user/createUser', request);
+    console.log(response)
     if (response.status !== 200) {
       throw new Error(`Failed to verify OTP: ${response.status}`);
     }
@@ -115,7 +116,54 @@ export async function verifySignUpOTP(request: OTPRegistrationRequest,navigate:a
     if(error.code==="ERR_NETWORK"){
       navigate('/errors/error_503')
       throw new Error('Network Error');
-      
+  }
+  else{
+      console.error('Error fetching :', error);
+      toast.error(error.response.data.message)
+  }
+  }
+}
+
+
+
+
+// Service to verify OTP
+export async function verifyEmailOTP(request: EmailOTPRequest,navigate:any){
+  try {
+    // debugger;
+    console.log(request)
+    const response = await axiosApi.post('/user/verifyemailotp', request);
+    console.log(response)
+    if (response.status !== 200) {
+      throw new Error(`Failed to verify OTP: ${response.status}`);
+    }
+    else{
+      return response.data
+    }
+  } catch (error: any) {
+    if(error.code==="ERR_NETWORK"){
+      throw new Error('Network Error');
+  }
+  else{
+      console.error('Error fetching :', error);
+      toast.error(error.response.data.message)
+  }
+  }
+}
+
+export async function verifyMobileOTP(request: MobileOTPRequest,navigate:any){
+  try {
+    const response = await axiosApi.post('/user/verifyphoneotp', request);
+    console.log(response)
+    if (response.status !== 200) {
+      throw new Error(`Failed to verify OTP: ${response.status}`);
+    }
+    else{
+      return response.data
+    }
+  } catch (error: any) {
+    if(error.code==="ERR_NETWORK"){
+      throw new Error('Network Error');
   }
   else{
       console.error('Error fetching :', error);

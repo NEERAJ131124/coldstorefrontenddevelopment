@@ -4,5 +4,5 @@ import { decodeToken } from '../Config/apiConfig';
 
 export default function PrivateRoutes() {
     const token = decodeToken()
-    return token ? <Outlet /> : <Navigate to={`${process.env.PUBLIC_URL}/login`} />
+    return token ? <Outlet /> : <Navigate to={`${process.env.PUBLIC_URL}/home`} />
 }
