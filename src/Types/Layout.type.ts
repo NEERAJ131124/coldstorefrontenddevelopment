@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { FacilityListData } from "./Facility.type";
 
 export interface LayoutStateProps {
     responsiveSearch: boolean;
@@ -134,6 +135,18 @@ export interface SearchSuggestionItem {
     id?: number;
 }
 
+export interface SearchSuggestionItem1 {
+    Name: string | undefined;
+    City: string;
+    State: string;
+    id?: number;
+}
+
 export interface SearchSuggestionListType {
     searchedArray: SearchSuggestionItem[];
+}
+
+
+export interface SearchSuggestionListType1 {
+    searchedArray: FacilityListData[];
 }

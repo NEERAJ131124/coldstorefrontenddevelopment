@@ -1,8 +1,11 @@
+
+
+
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Btn, H2, P } from "../../../../../AbstractElements";
-import { useNavigate } from "react-router-dom";
+import { Btn, H2, H3, P } from "../../../../../AbstractElements";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginFormProp } from '../../../../../Types/Others.type';
 import CommonLogo from "./CommonLogo";
 import { FormGroup } from "reactstrap";
@@ -21,7 +24,7 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
 
   const validationSchema = Yup.object({
     email: Yup.string()
-      .required("Email/Mpbile Number is required")
+      .required("Email / Mobile Number is required")
       .matches(
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$|^[0-9]{10}$/,
         "Must be a valid email or 10-digit mobile number"
@@ -64,7 +67,7 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
         >
           {({ isSubmitting }) => (
             <Form className="theme-form">
-              <H2>{"Sign In to Your Account"}</H2>
+              <H3>{"Sign In to Your Account"}</H3>
               <P>{"Using OTP"}</P>
               <FormGroup>
                 <Field
@@ -85,12 +88,19 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
                   />
                   <ErrorMessage name="otp" component="div" className="text-danger" />
                 </FormGroup>
-              )}
+              )}  
               <div className="text-end mt-3">
                 <Btn color="primary" block className="w-100" disabled={isSubmitting}>
                   {isOTP ? "Send OTP" : "Verify OTP"}
                 </Btn>
+           
               </div>
+              <div className="mt-3" >
+              I agree with your  <Link to={'/terms'}><u>Terms of Service</u></Link> & <Link to={'/privacypolicy'}><u>Privacy Policy</u></Link>
+                </div>
+                <div className="mt-3 text-center">
+                                Don't have an account? <Link to="/register">Register</Link>
+                              </div>
             </Form>
           )}
         </Formik>
@@ -119,116 +129,121 @@ export default LoginForm;
 
 
 
-
-// import React, { FormEvent, useState } from 'react';
-// import { Btn, H2, P } from '../../../../../AbstractElements';
-// import { Link, useNavigate } from 'react-router-dom';
+// import React, { useState } from "react";
+// import { Formik, Form, Field, ErrorMessage } from "formik";
+// import * as Yup from "yup";
+// import { Btn, H2, H3, P } from "../../../../../AbstractElements";
+// import { useNavigate } from "react-router-dom";
 // import { LoginFormProp } from '../../../../../Types/Others.type';
-// import CommonLogo from './CommonLogo';
-// import { Col, Form, FormGroup, Input, Label } from 'reactstrap';
-// import { EmailAddress, OTP, Password, RememberPassword, SignIn, SignInAccount } from '../../../../../Utils/Constants';
-// import SocialLinks from './SocialLinks';
-// import { toast } from 'react-toastify';
-// import { useGetRequestQuery } from '../../../../../hooks/useGetRequestQuery';
-// // import { submitLoginService } from '../../../../../api-service/Auth/Index';
-// import { axiosApi } from '../../../../../Config/apiConfig';
+// import CommonLogo from "./CommonLogo";
+// import { FormGroup } from "reactstrap";
+// import { toast } from "react-toastify";
+// import { sendOTP, verifyOTP } from "../../../../../api-service/Auth/Index";
 
-// // Define the types for the form data
-// interface FormData {
-//   email: string;
-//   otp: string;
-//   checkbox1: boolean;
-// }
-
-// export default function LoginForm({ logoClass }: LoginFormProp) {
+// const LoginForm = ( { logoClass }: LoginFormProp) => {
 //   const navigate = useNavigate();
 //   const [isOTP, setIsOTP] = useState(true);
-// //   const toggle = () => setPasswordVisible(!isPasswordVisible);
 
-//   // Define the state for form data
-//   const [formData, setFormData] = useState<FormData>({ email: '', otp: '', checkbox1: false });
-
-//   // Handle input changes
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { id, value, type, checked } = e.target;
-//     setFormData((prevData) => ({
-//       ...prevData,
-//       [id]: type === 'checkbox' ? checked : value,
-//     }));
+//   // Initial form values
+//   const initialValues = {
+//     email: "",
+//     mobile:"",
+//     mobileOtp:"",
+//     emailOtp: "",
 //   };
 
-//   // Handle form submission
-//   const handleSubmit = async (e: FormEvent) => {
-//     e.preventDefault();
-//     setIsOTP(false)
-//     // Perform form validation if needed, currently skipping
-//     try {
-//         debugger;
-//       const response = await axiosApi.post(`${process.env.REACT_APP_API_URL}/login/login-or-signup`, {Email:formData.email});
-//       console.log(response);
+//   const validationSchema = Yup.object({
+//     email: Yup.string()
+//       .email("Invalid email format") // Validates proper email format
+//       .required("Email is required"), // Ensures email is not empty
+//     mobile: Yup.string()
+//       .matches(/^[6-9][0-9]{9}$/, "Mobile number must be a valid Indian number.") // Validates the 10-digit mobile number starting with 6-9
+//       .required("Mobile number is required"), // Ensures mobile is not empty
+//   });
+  
 
-//       toast.success('Login Success!');
-//       localStorage.setItem('login', JSON.stringify(true));
-      
-//       // Navigate to the dashboard after successful login
-//       navigate(`${process.env.PUBLIC_URL}/dashboard/default`);
+//   const handleSubmit = async (values: typeof initialValues) => {
+//     try {
+//       debugger;
+//       if (isOTP) {
+//         const requestData = {
+//           Email: values.email,
+//           Mobile: values.mobile,
+//         };
+//         const response = await sendOTP(requestData);
+//         toast.success("OTP sent successfully!");
+//         setIsOTP(false); 
+//       } 
+//       else {
+//         const requestData = {
+//           Email: values.email, 
+//           Mobile: values.mobile, 
+//           MobileOTP: values.mobileOtp,
+//           EmailOTP:values.emailOtp
+//         };
+//        await verifyOTP(requestData,navigate);
+//       }
 //     } catch (error) {
-//       toast.error('Login failed. Please try again.');
-//       console.error('Error during login:', error);
+//       console.error(error);
 //     }
 //   };
-
+  
 //   return (
 //     <div>
-//       <div>
-//         <CommonLogo logoClass={logoClass} />
-//       </div>
+//       <CommonLogo logoClass={logoClass} />
 //       <div className="login-main">
-//         <Form className="theme-form" onSubmit={handleSubmit}>
-//           <H2>{SignInAccount}</H2>
-//           <P>
-//             {'Using OTP'}
-//             <hr style={{ padding: 0, margin: 0, width: '55px', height: '3px', color: 'black' }} />
-//           </P>
-//           <FormGroup>
-//             <Input
-//               type="text"
-//               required
-//               placeholder="Email / Mobile Number"
-//               id="email"
-//               value={formData.email}
-//               onChange={handleInputChange}
-//             />
-//           </FormGroup>
-//           <FormGroup>
-//             <Input
-//               type="text"
-//             //   required
-//               placeholder="Enter OTP"
-//               hidden={isOTP}
-//               id="otp"
-//               value={formData.otp}
-//               onChange={handleInputChange}
-//             />
-//           </FormGroup>
-//           <FormGroup className="mb-0 checkbox-checked">
-//             <FormGroup className="checkbox-solid-info" check>
-//               {/* Optionally add checkbox for Remember Password */}
-//               {/* <Input id="solid6" type="checkbox" checked={formData.checkbox1} onChange={handleInputChange} /> */}
-//               {/* <Label htmlFor="solid6" check>{RememberPassword}</Label> */}
-//             </FormGroup>
-//             {/* Optionally link to forget password page */}
-//             {/* <Link to={`${process.env.PUBLIC_URL}/authentication/forget_password`}>{'Forgot password?'}</Link> */}
-//             <div className="text-end mt-3">
-//               <Btn color="primary" block className="w-100">
-//                 {SignIn}
-//               </Btn>
-//             </div>
-//           </FormGroup>
-//           <SocialLinks />
-//         </Form>
+//         <Formik
+//           initialValues={initialValues}
+//           validationSchema={validationSchema}
+//           onSubmit={handleSubmit}
+//         >
+//           {({ isSubmitting }) => (
+//             <Form className="theme-form">
+//               <H3>{"Sign In / Sign Up to Your Account"}</H3>
+//               <P>{"Using OTP"}</P>
+//               <FormGroup>
+//                 <Field
+//                   type="text"
+//                   name="email"
+//                   placeholder="Email / Mobile Number"
+//                   className="form-control"
+//                 />
+//                 <ErrorMessage name="email" component="div" className="text-danger" />
+//               </FormGroup>
+//               {!isOTP && (
+//                 <>
+//                  <FormGroup>
+//                   <Field
+//                     type="text"
+//                     name="emailOtp"
+//                     placeholder="Enter Email OTP"
+//                     className="form-control"
+//                   />
+//                   <ErrorMessage name="emailOtp" component="div" className="text-danger" />
+//                 </FormGroup>
+//                 <FormGroup>
+//                   <Field
+//                     type="text"
+//                     name="mobileOtp"
+//                     placeholder="Enter Mobile OTP"
+//                     className="form-control"
+//                   />
+//                   <ErrorMessage name="mobileOtp" component="div" className="text-danger" />
+//                 </FormGroup>
+//                 </>
+//               )}  
+//               <div className="text-end mt-3">
+//                 <Btn color="primary" block className="w-100" disabled={isSubmitting}>
+//                   {isOTP ? "Send OTP" : "Verify OTP"}
+//                 </Btn>
+//               </div>
+//             </Form>
+//           )}
+//         </Formik>
 //       </div>
 //     </div>
 //   );
-// }
+// };
+
+// export default LoginForm;
 

@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 import { axiosApi } from "../../Config/apiConfig";
 
-
 export const submitFacility =async (data:any,navigate:any,reset:any) => {
     try {
         debugger;
@@ -26,6 +25,45 @@ export const submitFacility =async (data:any,navigate:any,reset:any) => {
       }
 }
 
+export const updateFacility =async (data:any,navigate:any,reset:any) => {
+  try {
+      debugger;
+      const response = await axiosApi.put(`/storagefacility/${data._id}`, data,{
+          headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+      });
+      console.log(response)
+      if (response.status !== 201) {
+        throw new Error(`Failed to update Facility: ${response.status}`);
+      }
+      else{
+          reset();
+          toast.success(response.data.message);
+          return response.data; // Axios automatically parses JSON
+      }
+    } 
+    catch (error: any) {
+      console.log(error)
+      toast.error(error.response.data.message)    
+    }
+}
+
+export const getAllFacility =async (navigate:any) => {
+  try {
+      debugger;
+      const response = await axiosApi.get(`/storagefacility`,{
+      });
+      if (response.status !== 200) {
+        throw new Error(`Failed to send OTP: ${response.status}`);
+      }
+  
+      return response.data; // Axios automatically parses JSON
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+}
 
 export const getFacility =async (navigate:any) => {
     try {
@@ -45,8 +83,6 @@ export const getFacility =async (navigate:any) => {
         toast.error(error.response.data.message);
       }
 }
- 
-
 
 export const getFacilityDetails =async (id:any,navigate:any) => {
   try {
@@ -67,8 +103,6 @@ export const getFacilityDetails =async (id:any,navigate:any) => {
     }
 }
 
-
-  
 export async function getStorageType() {
     try {
         debugger;
@@ -91,5 +125,22 @@ export async function getStorageType() {
             console.error('Error fetching :', error);
         }
     }
-  }
+}
   
+export const deleteFacility =async (id:any,navigate:any) => {
+  try {
+      debugger;
+      const response = await axiosApi.delete(`/storagefacility/${id}`,{
+          headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+      });
+      if (response.status !== 200) {
+        throw new Error(`Failed to send OTP: ${response.status}`);
+      }
+      return response.data; // Axios automatically parses JSON
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+}
