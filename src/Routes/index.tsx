@@ -39,7 +39,6 @@ export default function Routers() {
                 <Route path={`${process.env.PUBLIC_URL}/home`} element={<HomePage />} />
                 <Route path={`${process.env.PUBLIC_URL}/contactus`} element={<ContactUs />} />
 
-
             </Routes>
         </BrowserRouter>
     )

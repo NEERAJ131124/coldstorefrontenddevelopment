@@ -262,6 +262,9 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
                   </Btn>
                 )}
               </div>
+              <div className="mt-3" >
+                                By continuing, I agree with your <Link to={'/terms'}><u>Terms of Service</u></Link> , <Link to={'/privacypolicy'}><u>Privacy Policy</u>.</Link> & <Link to={'/refundpolicy'}><u>Refund Policy</u>.</Link>
+                            </div>
               <div className="mt-3 text-center">
                 Already have an account? <Link to="/login">Login</Link>
               </div>

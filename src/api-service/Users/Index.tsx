@@ -15,6 +15,7 @@ export const updateUserProfile = async (request: UsersRequest, navigate: any) =>
         }
         else{
             toast.success(response.data.message);
+            navigate('/users/user_profile')
             return response.data; // Axios automatically parses JSON
         }
     } catch (error: any) {

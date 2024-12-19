@@ -5,7 +5,7 @@ import { Button, Col, Input, Row } from "reactstrap";
 import { getAllFacility } from "../../../api-service/Facility/Index";
 import { useNavigate } from "react-router-dom";
 
-const subscriptionKey = "B4KsuUEC2SiY60gpredNw0zz8IFJvTaKgUBj2WpCAudhNRczlSIuJQQJ99ALAC8vTInNpgzmAAAgAZMP1uvz";
+const subscriptionKey = "7fusj80fNBUdtY4Y1m5qL3MfXq0tWOPjzeopPFMe4NTXn7aHKjULJQQJ99ALACYeBjFSK7XTAAAgAZMP2nFq";
 
 const MapPage = () => {
   const [pinCode, setPinCode] = useState("");

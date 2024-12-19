@@ -47,7 +47,7 @@ export async function getCountry(navigate:any) {
         return null;
     }
     else{
-        toast.error(`${error.response.data.message}`);
+        // toast.error(`${error.response.data.message}`);
     }
   }
 }
@@ -76,7 +76,7 @@ export async function deleteCountry(id:any,navigate:any) {
         }
         else{
             console.error('Error deleting :', error);
-            toast.error(`${error.response.data.message}`);
+            // toast.error(`${error.response.data.message}`);
         }
     }
   }
@@ -127,7 +127,7 @@ export async function getState(navigate:any) {
             return null;
         }
         else{
-            toast.error(`${error.response.data.message}`);
+            // toast.error(`${error.response.data.message}`);
         }
     }
   }
@@ -151,7 +151,7 @@ export async function getState(navigate:any) {
             return null;
         }
         else{
-            toast.error(`${error.response.data.message}`);
+            // toast.error(`${error.response.data.message}`);
         }
     }
   }

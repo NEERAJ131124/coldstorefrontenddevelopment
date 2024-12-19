@@ -9,10 +9,11 @@ export default function Footer() {
             <Container fluid>
                 <Row>
                     <Col md={6} className="footer-copyright">
-                        <P className="mb-0">{'Copyright 2024 © Book My Cold storage.'}</P>
+                        <P className="mb-0">{`Copyright ${new Date().getFullYear()} © Book My Cold Store`}</P>
                     </Col>
                     <Col md={6}>
-                        <P className="float-end mb-0">{'Anthem Infotech Pvt Ltd. '}
+                        <P className="float-end mb-0">
+                            Developed by  <a href="https://antheminfotech.com" target="_blank"> Anthem Infotech Pvt. Ltd.</a>
                             {/* <SvgIcon className='svg-color footer-icon' iconId='heart' /> */}
                         </P>
                     </Col>

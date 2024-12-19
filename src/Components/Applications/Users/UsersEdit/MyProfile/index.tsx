@@ -32,7 +32,11 @@ export default function MyProfile() {
     return (
         <Col xl={12}>
             <Card>
-           
+                {
+                    isLoading && <div>
+                        <Loader></Loader>
+                    </div>
+                }
                 <CommonCardHeader titleClass='card-title' title={MyProfileTitle} />
                 <CardBody>
                     <Form onSubmit={(e) => e.preventDefault()}>
