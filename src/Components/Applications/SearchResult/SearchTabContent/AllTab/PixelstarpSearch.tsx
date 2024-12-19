@@ -13,6 +13,7 @@ export default function PixelstarpSearch({ paginatedResults, searchText }:any) {
           <div className="info-block" key={item._id}>
             <H6>{item.Name}</H6>
             <Label>
+            <i className={`fa-solid fa-location me-1`}/>
               {item.GeoLocation.City.toLocaleUpperCase()} |{" "}
               {item.GeoLocation.State.StateName.toLocaleUpperCase()} |{" "}
               {item.GeoLocation.Country.CountryName.toLocaleUpperCase()}

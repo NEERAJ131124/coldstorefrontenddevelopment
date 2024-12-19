@@ -20,12 +20,12 @@ export default function SearchTabContent({ activeTab, searchText }: ExtendedSear
     useEffect(() => { dispatch(fetchFacilitySearchData()); }, [dispatch]);
 
     console.log(allFacilityResult);
-    const searchResult = allFacilityResult.filter((item) => item.Name?.toLowerCase().includes(searchText.toLowerCase()));
+    const searchResult = allFacilityResult.filter((item) => 
+        item.Name?.toLowerCase().includes(searchText.toLowerCase())|| item.GeoLocation.Pincode?.toLowerCase().includes(searchText.toLowerCase()));
     console.log(searchResult);
 
     return (
         <>
-            
              <TabContent activeTab={activeTab}>
                     <TabPane className='search-links' tabId={1}>
                         <AllTab searchText={searchText} allFacilityResult={searchResult} />
