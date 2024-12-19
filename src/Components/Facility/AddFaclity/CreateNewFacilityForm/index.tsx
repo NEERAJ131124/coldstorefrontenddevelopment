@@ -4,13 +4,19 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Col, Form, FormGroup, Input, Row } from "reactstrap";
 import { Btn, H5, P } from "../../../../AbstractElements";
 import { Cancel, Select } from "../../../../Utils/Constants";
-import { getFacilityDetails, getStorageType, submitFacility } from "../../../../api-service/Facility/Index";
+import { getFacilityDetails, getStorageType, submitFacility, updateFacility } from "../../../../api-service/Facility/Index";
 import { getCountry, getStateByCountryId } from "../../../../api-service/Location/Index";
 import { getCurrentLocation } from "../../../../Common/methods";
 import { toast } from "react-toastify";
 import { FacilityListData } from "../../../../Types/Facility.type";
 
+interface CreateNewFacilityFormProps {
+    setIsCreate: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+
 interface FacilityFormData {
+    _id: string;
     isOwner: boolean;
     Name: string;
     ContactDetails: string[];
@@ -32,7 +38,7 @@ interface FacilityFormData {
     CapacityUnit: string;
 }
 
-export default function CreateNewFacilityForm() {
+const CreateNewFacilityForm: React.FC<CreateNewFacilityFormProps> = ({ setIsCreate }) =>    {
     const { id } = useParams();
     const [item, setItem] = useState<FacilityListData | null>(null);
     const { register, handleSubmit, formState: { errors }, setValue, clearErrors, watch } = useForm<FacilityFormData>();
@@ -56,42 +62,59 @@ export default function CreateNewFacilityForm() {
     }
 
     const getFacilityDetail = async (id: any) => {
-            const response = await getFacilityDetails(id, navigate)
-            if (response != null) {
-                // setValue('isOwner', response.data.I);
-                setValue('Name', response.data.Name);
-                setValue('OpeningTime', response.data.OpeningTime);
-                setValue('ClosingTime', response.data.ClosingTime);
-                setValue('ContactDetails.0', response.data.ContactDetails[0]);
-                setValue('ContactDetails.1', response.data.ContactDetails[1]);
-                setValue('GeoLocationData.StreetAddress', response.data.GeoLocation.StreetAddress);
-                setValue('GeoLocationData.District', response.data.GeoLocation.District);
-                setValue('GeoLocationData.City', response.data.GeoLocation.City);
-                setValue('GeoLocationData.State', response.data.GeoLocation.State._id);
-                setValue('GeoLocationData.Country', response.data.GeoLocation.Country);
-                setValue('GeoLocationData.Pincode', response.data.GeoLocation.Pincode);
-                setStateId(response.data.GeoLocation.Country._id)
-                setStateId(response.data.GeoLocation.State._id)
+        //    resetForm();
 
-                // setValue('StorageCapacities', response.data.StorageCapacities);
-                // setValue('StorageTypeId', '');
-                // setValue('StorageCapacity', '');
-                // setValue('CapacityUnit', 'Tons');
-                // setStorageTypeList(response.data.StorageCapacities);
-                setStorageTypeListCopy(response.data.StorageCapacities);
-            }
+        const response = await getFacilityDetails(id, navigate)
+        if (response != null) {
+            const facility = response?.data?.facility;
+            debugger;
+            setValue('_id', facility?._id);
+            setValue('Name', facility?.Name);
+            setValue('OpeningTime', facility?.OpeningTime);
+            setValue('ClosingTime', facility?.ClosingTime);
+            setValue('ContactDetails.0', facility?.ContactDetails[0]);
+            setValue('ContactDetails.1', facility?.ContactDetails[1]);
+            setValue('GeoLocationData.StreetAddress', facility?.GeoLocation?.StreetAddress);
+            setValue('GeoLocationData.District', facility?.GeoLocation?.District);
+            setValue('GeoLocationData.City', facility?.GeoLocation?.City);
+            setValue('GeoLocationData.State', facility?.GeoLocation?.State._id);
+            setValue('GeoLocationData.Country', facility?.GeoLocation?.Country);
+            setValue('GeoLocationData.Pincode', facility?.GeoLocation?.Pincode);
+            setCountryId(facility?.GeoLocation?.Country?._id)
+            getStateList(facility?.GeoLocation?.Country?._id);
+            setStateId(facility?.GeoLocation?.State?._id)
+            facility?.StorageFacilityCapacities.forEach((element: any) => {
+                console.log('StorageCapacities', element);
+                storagetypeList.push({
+                    StorageTypeId: element.StorageTypeId._id,
+                    StorageTypeName: element.StorageTypeId.Type,
+                    StorageCapacity: element.StorageCapacity,
+                    CapacityUnit: element.CapacityUnit,
+                });
+
+                storagetypeListCopy.push({
+                    StorageTypeId: element.StorageTypeId._id,
+                    StorageCapacity: element.StorageCapacity,
+                    CapacityUnit: element.CapacityUnit,
+                })
+            });
+
         }
-        useEffect(() => {
-            if(id){
-                getFacilityDetail(id)
-            }
-            else{
-                resetForm();
-            }
-        }, [id])
+    }
+    useEffect(() => {
+        if (id) {
+            getFacilityDetail(id)
+            setIsCreate(false);
+        }
+        else {
+            resetForm();
+            setIsCreate(true);
+        }
+    }, [id])
 
     const resetForm = () => {
         setValue('isOwner', false);
+        setValue('_id', '');
         setValue('Name', '');
         setValue('OpeningTime', '');
         setValue('ClosingTime', '');
@@ -127,21 +150,27 @@ export default function CreateNewFacilityForm() {
             setStateList([]);
         }
     }
-
     const handleCountryChange = (e: any) => {
         setCountryId(e.target.value);
         setValue('GeoLocationData.Country', e.target.value);
         getStateList(e.target.value);
     }
-
-
     const addFacility = async (data: any) => {
-        const location = await getCurrentLocation();
-        data.StorageCapacities = storagetypeListCopy;
-        data.GeoLocationData.Latitude = location.latitude;
-        data.GeoLocationData.Longitude = location.longitude;
-        console.log(data)
-        const response = await submitFacility(data, navigate,resetForm);
+        if (data._id) {
+            debugger
+            data.StorageCapacities = storagetypeListCopy;
+            console.log(data)
+            const response = await updateFacility(data, navigate, resetForm);
+            console.log(response)
+        }
+        else {
+            const location = await getCurrentLocation();
+            data.StorageCapacities = storagetypeListCopy;
+            data.GeoLocationData.Latitude = location.latitude;
+            data.GeoLocationData.Longitude = location.longitude;
+            console.log(data)
+            const response = await submitFacility(data, navigate, resetForm);
+        }
     };
     const clearStorageTypeForm = () => {
         setUnit('Tons');
@@ -173,14 +202,13 @@ export default function CreateNewFacilityForm() {
         clearStorageTypeForm()
     };
 
-    const removeItem = (indexToRemove:any) => {
+    const removeItem = (indexToRemove: any) => {
         const updatedList = storagetypeList.filter((_, index) => index !== indexToRemove);
         setStorageTypeList(updatedList);
 
         const updatedListCopy = storagetypeListCopy.filter((_, index) => index !== indexToRemove);
         setStorageTypeListCopy(updatedListCopy);
     };
-
 
     useEffect(() => {
         getCountryList();
@@ -193,6 +221,12 @@ export default function CreateNewFacilityForm() {
         <Form className="theme-form basic-form mb-4" onSubmit={handleSubmit(addFacility)}>
             <Row>
                 <Col sm={6} md={6}>
+                    <input
+                        className="form-control"
+                        type="text"
+                        hidden
+                        {...register("_id")}
+                    />
                     <FormGroup>
                         <H5 className="f-w-600 mb-2">Facility Name</H5>
                         <input
@@ -447,7 +481,6 @@ export default function CreateNewFacilityForm() {
                     </FormGroup>
                 </Col>
                 <Col sm={2} md={2} className="d-flex text-end mb-4">
-
                     <Btn
                         type="button"
                         color="success"
@@ -483,12 +516,12 @@ export default function CreateNewFacilityForm() {
                     <ul className="list-group mt-3">
                         {storagetypeList.map((item, index) => (
                             <li key={index} className="list-group-item d-flex justify-content-between mb-2">
-                               <P><strong>Type:</strong> {item.StorageTypeName}, <strong>Capacity:</strong>{" "}
-                               {item.StorageCapacity} {item.CapacityUnit}
-                               </P> 
-                               <strong onClick={()=>removeItem(index)} style={{cursor:'pointer'}}  className="fs-4">
-                                  x
-                               </strong>
+                                <P><strong>Type:</strong> {item.StorageTypeName}, <strong>Capacity:</strong>{" "}
+                                    {item.StorageCapacity} {item.CapacityUnit}
+                                </P>
+                                <strong onClick={() => removeItem(index)} style={{ cursor: 'pointer' }} className="fs-4">
+                                    x
+                                </strong>
                             </li>
                         ))}
                     </ul>
@@ -497,9 +530,14 @@ export default function CreateNewFacilityForm() {
             <Row>
                 <Col>
                     <div className="text-end mt-3">
-                        <Btn color="success" className="me-3" disabled={storagetypeList.length>0?false:true}>
-                            Submit  
-                        </Btn>
+                        {
+                            id ? <Btn color="success" className="me-3" disabled={storagetypeList.length > 0 ? false : true}>
+                                Update
+                            </Btn> : <Btn color="success" className="me-3" disabled={storagetypeList.length > 0 ? false : true}>
+                                Submit
+                            </Btn>
+                        }
+
                         <Btn color="danger" type="button" onClick={(e) => { clearErrors(); resetForm() }}>Reset</Btn>
                     </div>
                 </Col>
@@ -507,3 +545,5 @@ export default function CreateNewFacilityForm() {
         </Form>
     );
 }
+
+export default CreateNewFacilityForm;

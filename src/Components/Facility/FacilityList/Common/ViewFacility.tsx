@@ -104,21 +104,28 @@ export default function ViewFacility() {
                                         <Col xs={8} className={`font-${item?.IsActive ? 'success' : 'danger'}`}>
                                             {item?.OpeningTime}  to {item?.ClosingTime}
                                         </Col>
+                                      
                                     </Row>
-                                    <div className='project-status mt-4'>
-                                        {/* {
+                                    <div className='mt-4'>
+                                        {
                                             item && item?.StorageFacilityCapacities.map((item: any, index: any) => (
-                                                <div key={item.StorageTypeId.TypeId} className="d-flex justify-content-between align-items-center gap-1 mb-2">
-                                                    <P className="mb-0">{item.StorageTypeId.Type}</P>
+                                                <div key={item.StorageTypeId.TypeId} className="d-flex align-items-center gap-1 mb-2">
+                                                    <Col sm={4}>
+                                                    <P className="mb-0"><i className={`fa-solid fa-cube me-2`} />{item.StorageTypeId.Type}</P>
+
+                                                    </Col>
+                                                    <Col sm={4}>
                                                     <P className="mb-0">{item.StorageCapacity} {item.CapacityUnit}</P>
+
+                                                    </Col>
                                                 </div>
                                             ))
-                                        } */}
+                                        }
                                     </div>
+                                    
                                 </div>
                         }
                     </Card>
-
 
                     <Modal modalClassName='modal-bookmark modal-centered' isOpen={doPayment} toggle={togglePayment} size='lg'>
                         <ModalHeader toggle={togglePayment}> {DoPayment}</ModalHeader>

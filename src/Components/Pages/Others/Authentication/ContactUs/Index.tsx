@@ -175,7 +175,7 @@ const ContactUs: React.FC = () => {
                       <FaPhoneAlt size={40} color="#308e87" />
                       <div className="ms-3">
                         <H3 className="mb-0">Phone</H3>
-                        <p className="mb-0">+91-9876543210</p>
+                        <p className="mb-0">+91-9243251888</p>
                       </div>
                     </div>
                   </Col>

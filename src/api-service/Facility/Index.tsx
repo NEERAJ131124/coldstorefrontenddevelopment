@@ -25,17 +25,19 @@ export const submitFacility =async (data:any,navigate:any,reset:any) => {
 
 export const updateFacility =async (data:any,navigate:any,reset:any) => {
   try {
+    debugger;
       const response = await axiosApi.put(`/storagefacility/${data._id}`, data,{
           headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
       });
-      if (response.status !== 201) {
+      if (response.status !== 200) {
         throw new Error(`Failed to update Facility: ${response.status}`);
       }
       else{
           reset();
           toast.success(response.data.message);
+          navigate("/facility/view")
           return response.data; // Axios automatically parses JSON
       }
     } 

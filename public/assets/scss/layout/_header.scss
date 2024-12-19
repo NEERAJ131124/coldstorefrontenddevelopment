@@ -49,6 +49,7 @@
   }
   &-header {
     width: 100%;
+    // height:100px;
     margin: 0;
     box-shadow: 0px 4px 34px rgba(10, 75, 85, 0.05);
     .svg-color {
@@ -60,8 +61,9 @@
 .page-header {
   .logo-wrapper {
     width: 253px;
-    justify-content: space-between;
-    padding: 15px 16px;
+    justify-content: center;
+    align-items: center;
+    // padding: 2px;
     background-color: var(--theme-default);
     @media (max-width: 1199px) {
       background-color: unset;

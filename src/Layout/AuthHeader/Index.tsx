@@ -92,8 +92,8 @@ export default function AuthHeader() {
                 <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
                     <Image
                         className="light-logo img-fluid"
-                        width={150}
-                        height={100}
+                        width={100}
+                        // height={100}
                         src={dynamicImage(`logo/BMCLogoDark.webp`)}
                         alt="logo"
                     />
@@ -101,6 +101,8 @@ export default function AuthHeader() {
                         className="dark-logo img-fluid"
                         src={dynamicImage(`logo/BMCLogoLight.webp`)}
                         alt="logo"
+                        width={10}
+
                     />
                 </Link>
             </Col>

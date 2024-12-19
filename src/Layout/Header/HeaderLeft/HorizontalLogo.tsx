@@ -19,8 +19,8 @@ export default function HorizontalLogo() {
     return (
         <Col xs="auto" className="logo-wrapper d-flex align-items-center">
             <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
-                <Image className="light-logo img-fluid" width={150} height={100} src={dynamicImage(`logo/BMCLogoDark.webp`)} alt="logo" />
-                <Image className="dark-logo img-fluid" src={dynamicImage(`logo/BMCLogoLight.webp`)} alt="logo" />
+                <Image className="light-logo img-fluid" width={100} height={100} src={dynamicImage(`logo/BMCLogoDark.webp`)} alt="logo" />
+                <Image className="dark-logo img-fluid" width={100} src={dynamicImage(`logo/BMCLogoLight.webp`)} alt="logo" />
             </Link>
             <a className="close-btn toggle-sidebar" href={Href} onClick={handleSidebarToggle}>
                 <SvgIcon className="svg-color" iconId="Category" />
