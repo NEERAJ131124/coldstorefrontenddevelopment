@@ -14,7 +14,7 @@ interface ExtendedSearchTabContentProp extends SearchTabContentProp {
 }
 
 
-export default function SearchTabContent({ activeTab ,searchText}: ExtendedSearchTabContentProp) {
+export default function SearchTabContent({ activeTab, searchText }: ExtendedSearchTabContentProp) {
     const { allFacilityResult } = useSelector((state: RootState) => state.facilitySearchResult);
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => { dispatch(fetchFacilitySearchData()); }, [dispatch]);
@@ -24,17 +24,22 @@ export default function SearchTabContent({ activeTab ,searchText}: ExtendedSearc
     console.log(searchResult);
 
     return (
-        <TabContent activeTab={activeTab}>
-            <TabPane className='search-links' tabId={1}>
-                <AllTab searchText={searchText} allFacilityResult={searchResult} />
-            </TabPane>
-            {/* <TabPane tabId={2}>
-                <ImageTab />
-            </TabPane> */}
-            {/* <TabPane tabId={3}>
-                <VideoTab allResult={allResult} />
-            </TabPane> */}
-        </TabContent>
+        <>
+            
+             <TabContent activeTab={activeTab}>
+                    <TabPane className='search-links' tabId={1}>
+                        <AllTab searchText={searchText} allFacilityResult={searchResult} />
+                    </TabPane>
+                    {/* <TabPane tabId={2}>
+                        <ImageTab />
+                        </TabPane> */}
+                    {/* <TabPane tabId={3}>
+                         <VideoTab allResult={allResult} />
+                        </TabPane> */}
+                </TabContent>
+            
+        </>
+
     )
 }
 

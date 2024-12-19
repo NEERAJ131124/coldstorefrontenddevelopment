@@ -10,10 +10,8 @@ const PrivacyPolicy: React.FC = () => {
     return (
         <>
         <AuthHeader/>
-         <Container className="mt-5">
-            <Row>
-                <Col sm={12}>
-                    <Card>
+         <Container fluid className="login-card login-dark login-bg">
+                 <Card className="p-3 mx-3 w-100">
                         <Link className="mx-4" to={'/login'}><h3><i className="fa fa-arrow-left me-2"></i>Back to Login</h3></Link>
                         <CommonCardHeader title={'Privacy Policy'} />
                         <CardBody style={{textAlign:'justify'}}>
@@ -153,9 +151,7 @@ const PrivacyPolicy: React.FC = () => {
                             <P>Address: Kb1802 , Salarpuria Greenage , Bangalore</P>
                             <P>Email: amanwaliaus@gmail.com </P> */}
                         </CardBody>
-                    </Card>
-                </Col>
-            </Row>
+                    </Card>   
         </Container>
         <Footer/>
         </>
