@@ -5,22 +5,15 @@ import image from '../../../../src/assets/img/hero-bg.jpg'
 import Client1 from '../../../../src/assets/img/clients/client-1.png'
 import Client2 from '../../../../src/assets/img/clients/client-2.png'
 import Client3 from '../../../../src/assets/img/clients/client-3.png'
-import Client4 from '../../../../src/assets/img/clients/client-4.png'
-import Client5 from '../../../../src/assets/img/clients/client-5.png'
-import Client6 from '../../../../src/assets/img/clients/client-6.png'
-import Client7 from '../../../../src/assets/img/clients/client-7.png'
-import Client8 from '../../../../src/assets/img/clients/client-8.png'
-import { Card, CardBody, CardHeader, Col, Container, Nav, NavItem, NavLink, Row } from 'reactstrap';
-import { justifyTabNav, pillsTabNav } from '../../../Data/UiKits/Tabs';
-import { Href } from '../../../Utils/Constants';
+// import Client4 from '../../../../src/assets/img/clients/client-4.png'
+// import Client5 from '../../../../src/assets/img/clients/client-5.png'
+// import Client6 from '../../../../src/assets/img/clients/client-6.png'
+// import Client7 from '../../../../src/assets/img/clients/client-7.png'
+// import Client8 from '../../../../src/assets/img/clients/client-8.png'
+import { Card, CardBody, Col, Container, Row } from 'reactstrap';
 import { useState } from 'react';
-import PillTabContent from '../../UiKits/TabBootstrap/PillsTab/PillTabContent';
-import JustifyTabContent from '../../UiKits/TabBootstrap/JustifyTab/JustifyTabContent';
 import HomeTabContent from './component/HomeTabContent';
 import Testimonials from './component/Testimonials';
-
-
-
 
 
 export default function HomePageSample() {
@@ -39,7 +32,7 @@ export default function HomePageSample() {
             <div className="row">
               {/* 🌍  */}
               <div className="col-lg-8">
-                <H2 data-aos="fade-up" data-aos-delay={100}>Be a part of the International Food Supply Chain</H2>
+                <H2 data-aos="fade-up" data-aos-delay={100}>Be a Part of the International Food Supply Chain</H2>
                 <p data-aos="fade-up" data-aos-delay={200}>Manage your cold store with our Digital Solution</p>
                 <div className="d-flex mt-4" data-aos="fade-up" data-aos-delay={300}>
                   <a href="#" onClick={() => { handleRegister() }} className="btn-get-started">Register now</a>

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import testinmonial1 from '../../../../assets/img/testimonials/testimonials-1.jpg'
-import testinmonial2 from '../../../../assets/img/testimonials/testimonials-2.jpg'
-import testinmonial3 from '../../../../assets/img/testimonials/testimonials-3.jpg'
-import testinmonial4 from '../../../../assets/img/testimonials/testimonials-4.jpg'
-import testinmonial5 from '../../../../assets/img/testimonials/testimonials-5.jpg'
+import React, { useState, useEffect } from 'react';
+import testinmonial1 from '../../../../assets/img/testimonials/testimonials-1.jpg';
+import testinmonial2 from '../../../../assets/img/testimonials/testimonials-2.jpg';
+import testinmonial3 from '../../../../assets/img/testimonials/testimonials-3.jpg';
+import testinmonial4 from '../../../../assets/img/testimonials/testimonials-4.jpg';
+import testinmonial5 from '../../../../assets/img/testimonials/testimonials-5.jpg';
 import { P } from '../../../../AbstractElements';
-
 
 const testimonialsData = [
   {
@@ -32,19 +31,31 @@ const testimonialsData = [
   // Add more testimonials as needed
 ];
 
-export default function Testimonials () {
- 
+export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false); // Track hover state
 
+  // Function to change the testimonial to the next one
   const nextTestimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialsData.length);
   };
 
+  // Function to change the testimonial to the previous one
   const prevTestimonial = () => {
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + testimonialsData.length) % testimonialsData.length
     );
   };
+
+  // Automatically change the testimonial every 8 seconds, unless hovered
+  useEffect(() => {
+    if (!isHovered) {
+      const interval = setInterval(nextTestimonial, 5000); // Change every 8 seconds (8000ms)
+
+      // Cleanup interval on component unmount or when hover state changes
+      return () => clearInterval(interval);
+    }
+  }, [isHovered]); // Only reset interval if hover state changes
 
   const { name, position, image, testimonial } = testimonialsData[currentIndex];
 
@@ -56,7 +67,11 @@ export default function Testimonials () {
       </div>
 
       <div className="container" data-aos="fade-up" data-aos-delay={100}>
-        <div className="testimonial-item">
+        <div
+          className="testimonial-item"
+          onMouseEnter={() => setIsHovered(true)} // Set hover state to true on hover
+          onMouseLeave={() => setIsHovered(false)} // Set hover state to false when hover ends
+        >
           <img src={image} className="testimonial-img" alt={name} />
           <h3>{name}</h3>
           <h4>{position}</h4>
@@ -85,5 +100,4 @@ export default function Testimonials () {
       </div>
     </section>
   );
-};
-
+}

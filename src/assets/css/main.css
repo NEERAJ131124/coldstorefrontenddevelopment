@@ -2571,7 +2571,9 @@ section,
 .testimonial-item {
   text-align: center;
 }
-
+.testimonial-item:hover{
+  background-color: #dfdddd;
+}
 .testimonial-navigation {
   display: flex;
   justify-content: space-between;
