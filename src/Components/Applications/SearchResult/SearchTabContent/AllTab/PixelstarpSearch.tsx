@@ -1,6 +1,7 @@
 
 import { Col, Label, Row } from "reactstrap";
 import { Btn, H6, LI, UL } from "../../../../../AbstractElements";
+import MapByCoordinates from "../../../../Facility/component/MapByCoordinates";
 
 export default function PixelstarpSearch({ paginatedResults, searchText }: any) {
 
@@ -59,15 +60,7 @@ export default function PixelstarpSearch({ paginatedResults, searchText }: any) 
                             {/* <div
                                 style={{ borderRadius: "10px", overflow: "hidden", boxShadow: "0px 4px 10px rgba(0,0,0,0.1)" }}
                             >
-                                <iframe
-                                    title="Google Map"
-                                    src={`https://www.google.com/maps/embed?pb=${encodeURIComponent(item.GeoLocation.City)}`}
-                                    width="400px"
-                                    height="140px"
-                                    style={{ border: "0" }}
-                                    allowFullScreen
-                                    loading="lazy"
-                                ></iframe>
+                               <MapByCoordinates coordinates={{latitude: item.GeoLocation.Latitude,longitude:item.GeoLocation.Longitude}}/>
                             </div> */}
                             </Col>
                         

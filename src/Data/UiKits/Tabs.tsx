@@ -1,6 +1,7 @@
-import { CardBody, Form, FormGroup, Input, Label, Table } from "reactstrap";
-import { H6, Image, LI, P, UL } from "../../AbstractElements";
+import { CardBody, Col, Form, FormGroup, Input, Label, Row, Table } from "reactstrap";
+import { H3, H6, Image, LI, P, UL } from "../../AbstractElements";
 import { dynamicImage } from "../../Utils";
+import { FaEnvelope, FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
 
 export const justifyTabSubTitle = [
     {
@@ -595,7 +596,7 @@ export const verticalTabData = [
     }
 ];
 
-export const pillsTabNav = [{ id: '1', nav: 'About us' }, { id: '2', nav: 'Contact us' }, { id: '3', nav: 'Blog' }];
+export const pillsTabNav = [{ id: '1', nav: 'About us' }, { id: '2', nav: 'Contact us' }];
 
 export const pillTabData = [
     {
@@ -615,18 +616,98 @@ export const pillTabData = [
                 <LI> <strong>{'Mail Us: '}</strong> {'SamuelMario@armyspy.com'}</LI>
                 <LI> <strong>{'Contact Number: '}</strong> {'(02) 4733 6337'}</LI>
             </UL>
-    },
-    {
-        id: '3',
-        text:
-            <div className="pt-3 d-flex align-items-center gap-3 pills-blogger">
-                <div className="blog-wrapper">
-                    <Image className="blog-img" src={dynamicImage(`dashboard-2/3.png`)} alt="head-phone" />
-                </div>
-                <div className="blog-content">
-                    <P><em className="text-danger fw-bold">{'Smart headphones'}</em> {' — also called smart earbuds or hearable — are high-tech in-ear devices that do more than transmit audio. These headphones are usually wireless, and they can sync up with your phone, tablet, computer or other Bluetooth-enabled device. The main appeal of hearables is convenience, as they allow you to complete common tasks without directly accessing your phone or computer. Smart wireless headphones sync up to other devices using Bluetooth technology, and many of their features rely on data from your smartphone or computer.'}</P>
-                </div>
-            </div>
-
     }
 ]
+export const homeTabContent = [
+    {
+        id: '1',
+        title: 'About Us',
+        text: (
+            <P className="pt-3">
+                <span>
+                   <H3>Welcome to Book My Cold Store!</H3> 
+                </span>
+                <br />
+                <br />
+                {"We are your one-stop destination for connecting businesses and individuals to cutting-edge cold storage facilities nationwide. Our platform is designed to simplify the storage process for perishable goods like:"}
+                <UL className="my-2 pl-3 ">
+                    <LI>{'Fresh Produce (Fruits and Vegetables)'}</LI>
+                    <LI>{'Dairy Products and Beverages'}</LI>
+                    <LI>{'Meat, Seafood, and Frozen Foods'}</LI>
+                    <LI>{'Pharmaceuticals and Vaccines'}</LI>
+                </UL>
+                {"Our mission is clear: "}
+                <strong style={{ color: "#ff5722" }}>
+                    {"To maintain the quality, safety, and freshness of your products with our reliable and efficient storage solutions."}
+                </strong>
+                <br />
+                <br />
+                <span style={{ fontStyle: "italic", color: "#6c757d" }}>
+                    {"Whether you're a farmer, retailer, or logistics provider, we are here to bridge the gap between your needs and the best cold storage solutions in the market. Together, let’s revolutionize the way goods are stored and transported!"}
+                </span>
+            </P>
+        ),
+    },
+    {
+        id: '2',
+        title: 'Contact Us',
+        text: (
+            <Row><Col sm={12} className="mb-3">
+            <div
+                  className="info-box d-flex align-items-center"
+                 style={{
+                   background: "#F1F8E9",
+                   borderRadius: "10px",
+                   padding: "20px",
+                   boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+                 }}
+               >
+                 <FaMapMarkedAlt size={40} color="#308e87" />
+                 <div className="ms-3">
+                   <H3 className="mb-0">Location</H3>
+                   <p className="mb-0">Kb1802, Salarpuria Greenage, Bangalore, Karnataka, India</p>
+                 </div>
+               </div>
+             </Col>
+             <Col sm={12} className="mb-3">
+               <div
+                 className="info-box d-flex align-items-center"
+                 style={{
+                   background: "#E8F5E9",
+                   borderRadius: "10px",
+                   padding: "20px",
+                   boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+                 }}
+               >
+                 <FaPhoneAlt size={40} color="#308e87" />
+                 <div className="ms-3">
+                   <H3 className="mb-0">Phone</H3>
+                   <p className="mb-0">+91-9243251888</p>
+                 </div>
+               </div>
+             </Col>
+             <Col sm={12}>
+               <div
+                 className="info-box d-flex align-items-center"
+                 style={{
+                   background: "#F1F8E9",
+                   borderRadius: "10px",
+                   padding: "20px",
+                   boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+                 }}
+               >
+                 <FaEnvelope size={40} color="#308e87" />
+                 <div className="ms-3">
+                   <H3 className="mb-0">Email</H3>
+                   <p className="mb-0">
+                     <a href="mailto:amanwaliaus@gmail.com" style={{ textDecoration: "none", color: "#308e87" }}>
+                       amanwaliaus@gmail.com
+                     </a>
+                   </p>
+                 </div>
+               </div>
+             </Col>
+           </Row>
+        ),
+    },
+];

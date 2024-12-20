@@ -1,22 +1,29 @@
 import { useNavigate } from 'react-router-dom';
 import '../../../../src/assets/css/main.css'
-import { H2 } from '../../../AbstractElements';
-import image  from '../../../../src/assets/img/hero-bg.jpg'
-import Client1  from '../../../../src/assets/img/clients/client-1.png'
-import Client2  from '../../../../src/assets/img/clients/client-2.png'
-import Client3  from '../../../../src/assets/img/clients/client-3.png'
-import Client4  from '../../../../src/assets/img/clients/client-4.png'
-import Client5  from '../../../../src/assets/img/clients/client-5.png'
-import Client6  from '../../../../src/assets/img/clients/client-6.png'
-import Client7  from '../../../../src/assets/img/clients/client-7.png'
-import Client8  from '../../../../src/assets/img/clients/client-8.png'
+import { H2, P } from '../../../AbstractElements';
+import image from '../../../../src/assets/img/hero-bg.jpg'
+import Client1 from '../../../../src/assets/img/clients/client-1.png'
+import Client2 from '../../../../src/assets/img/clients/client-2.png'
+import Client3 from '../../../../src/assets/img/clients/client-3.png'
+import Client4 from '../../../../src/assets/img/clients/client-4.png'
+import Client5 from '../../../../src/assets/img/clients/client-5.png'
+import Client6 from '../../../../src/assets/img/clients/client-6.png'
+import Client7 from '../../../../src/assets/img/clients/client-7.png'
+import Client8 from '../../../../src/assets/img/clients/client-8.png'
+import { Card, CardBody, CardHeader, Col, Container, Nav, NavItem, NavLink, Row } from 'reactstrap';
+import { justifyTabNav, pillsTabNav } from '../../../Data/UiKits/Tabs';
+import { Href } from '../../../Utils/Constants';
+import { useState } from 'react';
+import PillTabContent from '../../UiKits/TabBootstrap/PillsTab/PillTabContent';
+import JustifyTabContent from '../../UiKits/TabBootstrap/JustifyTab/JustifyTabContent';
+import HomeTabContent from './component/HomeTabContent';
 
 
 
 
 
 export default function HomePageSample() {
-
+  const [basicTab, setBasicTab] = useState('1');
   const navigate = useNavigate();
   const handleRegister = () => {
     navigate('/register')
@@ -31,37 +38,41 @@ export default function HomePageSample() {
             <div className="row">
               {/* 🌍  */}
               <div className="col-lg-8">
-                <H2 data-aos="fade-up" data-aos-delay={100}>Be a Part of The International Food Supply Chain</H2>
+                <H2 data-aos="fade-up" data-aos-delay={100}>Be a part of the International Food Supply Chain</H2>
                 <p data-aos="fade-up" data-aos-delay={200}>Manage your cold store with our Digital Solution</p>
                 <div className="d-flex mt-4" data-aos="fade-up" data-aos-delay={300}>
                   <a href="#" onClick={() => { handleRegister() }} className="btn-get-started">Register now</a>
-                  <a href="#" onClick={() => { handleRegister() }} className="btn-get-started text-white fs-6 pointer mx-3" style={{background:'#308e87'}}>Lifetime onboarding fee of 999 INR (Non Refundable)</a>
+                  <a href="#" onClick={() => { handleRegister() }} className="btn-get-started text-white fs-6 pointer mx-3" style={{ background: '#308e87' }}>Lifetime onboarding fee of 999 INR (Non Refundable)</a>
                 </div>
               </div>
             </div>
           </div>
         </section>{/* /Hero Section */}
         {/* Clients Section */}
-        {/* <section id="clients" className="clients section">
-          <div className="container" data-aos="fade-up" data-aos-delay={100}>
-            <div className="swiper init-swiper">
-              <div className="swiper-wrapper align-items-center">
+        <section id="clients" className="clients section">
+          <div>
+            <Row>
+              <Col sm={4}>
                 <div className="swiper-slide"><img src={Client1} className="img-fluid" alt="" /></div>
+              </Col>
+              <Col sm={4}>
                 <div className="swiper-slide"><img src={Client2} className="img-fluid" alt="" /></div>
+              </Col>
+              <Col sm={4}>
                 <div className="swiper-slide"><img src={Client3} className="img-fluid" alt="" /></div>
-                <div className="swiper-slide"><img src={Client4} className="img-fluid" alt="" /></div>
-                <div className="swiper-slide"><img src={Client5} className="img-fluid" alt="" /></div>
-                <div className="swiper-slide"><img src={Client6} className="img-fluid" alt="" /></div>
+              </Col>
+            </Row>
+               
+                {/* <div className="swiper-slide"><img src={Client4} className="img-fluid" alt="" /></div>
+                <div className="swiper-slide"><img src={Client5} className="img-fluid" alt="" /></div> */}
+                {/* <div className="swiper-slide"><img src={Client1} className="img-fluid" alt="" /></div>
                 <div className="swiper-slide"><img src={Client7} className="img-fluid" alt="" /></div>
-                <div className="swiper-slide"><img src={Client8} className="img-fluid" alt="" /></div>
+                <div className="swiper-slide"><img src={Client8} className="img-fluid" alt="" /></div> */}
               </div>
-              <div className="swiper-pagination" />
-            </div>
-          </div>
-        </section> */}
+        </section>
         {/* /Clients Section */}
         {/* About Section */}
-        <section id="about" className="dark-background my-4" style={{background:""}}>
+        <section id="about" className="about section section-bg dark-background">
           <div className="container position-relative">
             <div className="row gy-5">
               <div className="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay={100}>
@@ -91,7 +102,7 @@ export default function HomePageSample() {
                       </li>
                     </ul>
                   </div>{/* Icon-Box */}
-                
+
                   {/* <div className="col-md-6 icon-box position-relative">
                     <i className="bi bi-easel" />
                     <h4><a href="#" className="stretched-link">Beatae veritatis</a></h4>
@@ -139,144 +150,26 @@ export default function HomePageSample() {
           </div>
         </section> */}
         {/* Tabs Section */}
-        {/* <section id="tabs" className="tabs section">
-          <div className="container">
-            <ul className="nav nav-tabs row  d-flex" data-aos="fade-up" data-aos-delay={100}>
-              <li className="nav-item col-3">
-                <a className="nav-link active show" data-bs-toggle="tab" data-bs-target="#tabs-tab-1">
-                  <i className="bi bi-binoculars" />
-                  <h4 className="d-none d-lg-block">Modi sit est dela pireda nest</h4>
-                </a>
-              </li>
-              <li className="nav-item col-3">
-                <a className="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-2">
-                  <i className="bi bi-box-seam" />
-                  <h4 className="d-none d-lg-block">Unde praesenti mara setra le</h4>
-                </a>
-              </li>
-              <li className="nav-item col-3">
-                <a className="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-3">
-                  <i className="bi bi-brightness-high" />
-                  <h4 className="d-none d-lg-block">Pariatur explica nitro dela</h4>
-                </a>
-              </li>
-              <li className="nav-item col-3">
-                <a className="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-4">
-                  <i className="bi bi-command" />
-                  <h4 className="d-none d-lg-block">Nostrum qui dile node</h4>
-                </a>
-              </li>
-            </ul>
-            <div className="tab-content" data-aos="fade-up" data-aos-delay={200}>
-              <div className="tab-pane fade active show" id="tabs-tab-1">
-                <div className="row">
-                  <div className="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                    <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-                    <p className="fst-italic">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
-                    </p>
-                    <ul>
-                      <li><i className="bi bi-check2-all" />
-                        <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
-                      </li>
-                      <li><i className="bi bi-check2-all" /> <span>Duis aute irure dolor in reprehenderit in voluptate velit</span>.</li>
-                      <li><i className="bi bi-check2-all" /> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                    </ul>
-                    <p>
-                      Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                      culpa qui officia deserunt mollit anim id est laborum
-                    </p>
-                  </div>
-                  <div className="col-lg-6 order-1 order-lg-2 text-center">
-                    <img src="assets/img/working-1.jpg" alt="" className="img-fluid" />
-                  </div>
-                </div>
-              </div>
-              <div className="tab-pane fade" id="tabs-tab-2">
-                <div className="row">
-                  <div className="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                    <h3>Neque exercitationem debitis soluta quos debitis quo mollitia officia est</h3>
-                    <p>
-                      Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                      culpa qui officia deserunt mollit anim id est laborum
-                    </p>
-                    <p className="fst-italic">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
-                    </p>
-                    <ul>
-                      <li><i className="bi bi-check2-all" /> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                      <li><i className="bi bi-check2-all" /> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                      <li><i className="bi bi-check2-all" /> <span>Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
-                      <li><i className="bi bi-check2-all" /> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                    </ul>
-                  </div>
-                  <div className="col-lg-6 order-1 order-lg-2 text-center">
-                    <img src="assets/img/working-2.jpg" alt="" className="img-fluid" />
-                  </div>
-                </div>
-              </div>
-              <div className="tab-pane fade" id="tabs-tab-3">
-                <div className="row">
-                  <div className="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                    <h3>Voluptatibus commodi ut accusamus ea repudiandae ut autem dolor ut assumenda</h3>
-                    <p>
-                      Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                      culpa qui officia deserunt mollit anim id est laborum
-                    </p>
-                    <ul>
-                      <li><i className="bi bi-check2-all" /> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                      <li><i className="bi bi-check2-all" /> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                      <li><i className="bi bi-check2-all" /> <span>Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
-                    </ul>
-                    <p className="fst-italic">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
-                    </p>
-                  </div>
-                  <div className="col-lg-6 order-1 order-lg-2 text-center">
-                    <img src="assets/img/working-3.jpg" alt="" className="img-fluid" />
-                  </div>
-                </div>
-              </div>
-              <div className="tab-pane fade" id="tabs-tab-4">
-                <div className="row">
-                  <div className="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                    <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
-                    <p>
-                      Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                      culpa qui officia deserunt mollit anim id est laborum
-                    </p>
-                    <p className="fst-italic">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
-                    </p>
-                    <ul>
-                      <li><i className="bi bi-check2-all" /> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                      <li><i className="bi bi-check2-all" /> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                      <li><i className="bi bi-check2-all" /> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                    </ul>
-                  </div>
-                  <div className="col-lg-6 order-1 order-lg-2 text-center">
-                    <img src="assets/img/working-4.jpg" alt="" className="img-fluid" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
-        {/* /Tabs Section */}
+        <section className="tabs section">
+          <Card>
+            <CardBody>
+              <Container>
+                <ul className="nav nav-tabs row  d-flex" data-aos="fade-up" data-aos-delay={100}>
+                  <li className="nav-item col-12">
+                    <HomeTabContent tabId={basicTab} />
+                  </li>
+                </ul>
+              </Container>
+            </CardBody>
+          </Card>
+        </section>
+      
         {/* Services Section */}
-        {/* <section id="services" className="services section section-bg dark-background">
+        <section id="services" className="services section section-bg dark-background">
           <div className="container section-title" data-aos="fade-up">
             <h2>Services</h2>
             <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div>
+          </div>
           <div className="container">
             <div className="row gy-4">
               <div className="col-md-6" data-aos="fade-up" data-aos-delay={100}>
@@ -335,9 +228,10 @@ export default function HomePageSample() {
               </div>
             </div>
           </div>
-        </section> */}
+        </section>
         {/* /Services Section */}
         {/* Portfolio Section */}
+
         {/* <section id="portfolio" className="portfolio section">
           <div className="container section-title" data-aos="fade-up">
             <h2>Portfolio</h2>
@@ -489,8 +383,9 @@ export default function HomePageSample() {
             </div>
           </div>
         </section> */}
+
         {/* Testimonials Section */}
-        {/* <section id="testimonials" className="testimonials section">
+        <section id="testimonials" className="testimonials section">
           <div className="container section-title" data-aos="fade-up">
             <h2>Testimonials</h2>
             <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
@@ -517,7 +412,7 @@ export default function HomePageSample() {
               <div className="swiper-pagination" />
             </div>
           </div>
-        </section> */}
+        </section>
       </main>
     </div>
   );

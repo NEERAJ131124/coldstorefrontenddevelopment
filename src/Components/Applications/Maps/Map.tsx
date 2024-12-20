@@ -2,9 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import * as atlas from "azure-maps-control";
 import "azure-maps-control/dist/atlas.min.css";
 
-const subscriptionKey =
-  "B4KsuUEC2SiY60gpredNw0zz8IFJvTaKgUBj2WpCAudhNRczlSIuJQQJ99ALAC8vTInNpgzmAAAgAZMP1uvz";
-  
+
 // Replace with your Azure Maps subscription key
 
 interface City {
@@ -42,7 +40,7 @@ const StorageLocator: React.FC = () => {
       zoom: 4,
       authOptions: {
         authType: atlas.AuthenticationType.subscriptionKey,
-        subscriptionKey: subscriptionKey,
+        subscriptionKey: process.env.REACT_APP_AZURE_MAPS_KEY,
       },
     });
 
@@ -120,7 +118,7 @@ const StorageLocator: React.FC = () => {
       });
 
       const routeResponse = await fetch(
-        `https://atlas.microsoft.com/route/directions/json?api-version=1.0&query=${userLocation[1]},${userLocation[0]}:${nearestCity.coordinates[1]},${nearestCity.coordinates[0]}&subscription-key=${subscriptionKey}`
+        `https://atlas.microsoft.com/route/directions/json?api-version=1.0&query=${userLocation[1]},${userLocation[0]}:${nearestCity.coordinates[1]},${nearestCity.coordinates[0]}&subscription-key=${process.env.REACT_APP_AZURE_MAPS_KEY}`
       );
       const routeData = await routeResponse.json();
       if (routeData.routes && routeData.routes.length > 0) {
