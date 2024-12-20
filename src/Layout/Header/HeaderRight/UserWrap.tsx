@@ -52,7 +52,7 @@ export default function UserWrap() {
                     ))} */}
                        <LI className="d-flex" o>
                         <SvgIcon className='svg-color' iconId='Profile' />
-                        <Link className="ms-2" to={`${process.env.PUBLIC_URL}/  users/user_profile`}>
+                        <Link className="ms-2" to={`${process.env.PUBLIC_URL}/users/user_profile`}>
                             {'Account'}
                         </Link>
                     </LI>
