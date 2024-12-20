@@ -45,7 +45,7 @@ import { RootState } from '../../ReduxToolkit/Store';
 
 import { Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { H5, Image, LI, UL } from '../../AbstractElements';
+import { H4, H5, Image, LI, UL } from '../../AbstractElements';
 import { dynamicImage } from '../../Utils';
 
 export default function AuthHeader() {
@@ -88,7 +88,7 @@ export default function AuthHeader() {
                 transform: isHidden ? 'translateY(-100%)' : 'translateY(0)',
             }}
         >
-            <Col xs="auto" className="logo-wrapper d-flex align-items-center">
+            <Col xs="auto" className="logo-wrapper d-flex align-items-center py-3">
                 <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
                     <Image
                         className="light-logo img-fluid"
@@ -106,14 +106,14 @@ export default function AuthHeader() {
                     />
                 </Link>
             </Col>
-            <Col className="page-main-header d-flex justify-content-end">
-                <div className="nav-right">
+            <Col className="d-flex justify-content-end py-3 logo-wrapper">
+                <div className="nav-right me-4">
                     <UL className="header-right simple-list flex-row">
                         <LI className="d-flex">
-                            <Link to={'/contactus'}><H5>Contact</H5> </Link>
+                            <Link to={'/contactus'}><H5 className='text-white'>Contact</H5> </Link>
                         </LI>
                         <LI className="d-flex">
-                            <Link to={'/login'}> <H5>Login</H5> </Link>
+                            <Link to={'/login'}> <H5 className='text-white'>Login</H5> </Link>
                         </LI>
                     </UL>
                 </div>

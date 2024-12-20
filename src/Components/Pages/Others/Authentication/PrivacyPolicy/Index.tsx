@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Card, CardBody } from "reactstrap"; // If you're using Reactstrap
-import { H4, P } from "../../../../../AbstractElements";
+import { H3, H4, P } from "../../../../../AbstractElements";
 import CommonCardHeader from "../../../../../Utils/CommonComponents/CommonCardHeader";
 import { Link } from "react-router-dom";
 import Footer from "../../../../../Layout/Footer";
@@ -12,7 +12,7 @@ const PrivacyPolicy: React.FC = () => {
         <AuthHeader/>
          <Container fluid className="login-card login-dark login-bg">
                  <Card className="p-3 mx-3 w-100">
-                        <Link className="mx-4" to={'/login'}><h3><i className="fa fa-arrow-left me-2"></i>Back to Login</h3></Link>
+                        <H3><Link style={{cursor:"pointer"}} className="mx-4 fs-5" to={'/login'}><i className="fa fa-arrow-left me-2"></i>Back to Login</Link></H3>
                         <CommonCardHeader title={'Privacy Policy'} />
                         <CardBody style={{textAlign:'justify'}}>
                             <H4>

@@ -31,7 +31,7 @@ export default function HomePageSample() {
             <div className="row">
               {/* 🌍  */}
               <div className="col-lg-8">
-                <H2 data-aos="fade-up" data-aos-delay={100}>Be a part of the International Food Supply Chain</H2>
+                <H2 data-aos="fade-up" data-aos-delay={100}>Be a Part of The International Food Supply Chain</H2>
                 <p data-aos="fade-up" data-aos-delay={200}>Manage your cold store with our Digital Solution</p>
                 <div className="d-flex mt-4" data-aos="fade-up" data-aos-delay={300}>
                   <a href="#" onClick={() => { handleRegister() }} className="btn-get-started">Register now</a>
