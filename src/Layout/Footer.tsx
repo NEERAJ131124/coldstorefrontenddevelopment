@@ -13,7 +13,7 @@ export default function Footer() {
                     </Col>
                     <Col md={6}>
                         <P className="float-end mb-0">
-                            Developed by  <a href="https://antheminfotech.com" target="_blank"> Anthem Infotech Pvt. Ltd.</a>
+                            Developed by  <a href="#" target="_blank"> Anthem Infotech Pvt. Ltd.</a>
                             {/* <SvgIcon className='svg-color footer-icon' iconId='heart' /> */}
                         </P>
                     </Col>
