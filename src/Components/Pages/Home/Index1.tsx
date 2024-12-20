@@ -66,99 +66,7 @@ export default function HomePageSample() {
         </section>
         {/* /Clients Section */}
         {/* About Section */}
-        <section id="about" className="about section section-bg dark-background">
-          <div className="container position-relative">
-            <div className="row gy-5">
-              <div className="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay={100}>
-                <h3 className="mb-3">✨ Benefits:</h3>
-                <p>
-                  <span className="me-2 text-primary fs-5">✔️</span>
-                  Online presence and discovery of your cold store
-                </p>
-              </div>
-              <div className="col-xl-7" data-aos="fade-up" data-aos-delay={200}>
-                <div className="row gy-4">
-                  <div className="col-md-12 icon-box position-relative">
-                    <i className="bi bi-briefcase" />
-                    <h3>🚀 Coming Soon Features:</h3>
-                    <ul className="list-unstyled py-3">
-                      <li className="mb-2 d-flex align-items-start fs-5">
-                        <span className="me-2 text-warning fs-4">⚡</span>
-                        Cold store management solution
-                      </li>
-                      <li className="mb-2 d-flex align-items-start fs-5">
-                        <span className="me-2 text-warning fs-4">⚡</span>
-                        Online booking and payment by users
-                      </li>
-                      <li className="mb-2 d-flex align-items-start fs-5">
-                        <span className="me-2 text-warning fs-4">⚡</span>
-                        Online monitoring system (Temperature / Humidity / CO2, etc.)
-                      </li>
-                    </ul>
-                  </div>{/* Icon-Box */}
-
-                  {/* <div className="col-md-6 icon-box position-relative">
-                    <i className="bi bi-easel" />
-                    <h4><a href="#" className="stretched-link">Beatae veritatis</a></h4>
-                    <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-                  </div> */}
-                  {/* Icon-Box */}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>{/* /About Section */}
-        {/* Stats Section */}
-        {/* <section id="stats" className="stats section">
-          <div className="container" data-aos="fade-up" data-aos-delay={100}>
-            <div className="row gy-4">
-              <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                <i className="bi bi-emoji-smile" />
-                <div className="stats-item">
-                  <span data-purecounter-start={0} data-purecounter-end={232} data-purecounter-duration={1} className="purecounter" />
-                  <p>Happy Clients</p>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                <i className="bi bi-journal-richtext" />
-                <div className="stats-item">
-                  <span data-purecounter-start={0} data-purecounter-end={521} data-purecounter-duration={1} className="purecounter" />
-                  <p>Projects</p>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                <i className="bi bi-headset" />
-                <div className="stats-item">
-                  <span data-purecounter-start={0} data-purecounter-end={1463} data-purecounter-duration={1} className="purecounter" />
-                  <p>Hours Of Support</p>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                <i className="bi bi-people" />
-                <div className="stats-item">
-                  <span data-purecounter-start={0} data-purecounter-end={15} data-purecounter-duration={1} className="purecounter" />
-                  <p>Hard Workers</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
-        {/* Tabs Section */}
-        <section className="tabs section">
-          <Card>
-            <CardBody>
-              <Container>
-                <ul className="nav nav-tabs row  d-flex" data-aos="fade-up" data-aos-delay={100}>
-                  <li className="nav-item col-12">
-                    <HomeTabContent tabId={basicTab} />
-                  </li>
-                </ul>
-              </Container>
-            </CardBody>
-          </Card>
-        </section>
-      
-      
+        
         {/* /Services Section */}
         {/* Portfolio Section */}
 
@@ -315,7 +223,7 @@ export default function HomePageSample() {
         </section> */}
 
         {/* Testimonials Section */}
-        <Testimonials/>
+        
       </main>
     </div>
   );
