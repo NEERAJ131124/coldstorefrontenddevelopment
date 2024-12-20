@@ -7,6 +7,7 @@ import { menuList } from '../../../../Data/Layout/SidebarMenuList';
 import { X } from 'react-feather';
 import { setIsSearchBarOpen } from '../../../../ReduxToolkit/Reducers/Layout/LayoutReducer';
 import SearchResult from './SearchResult';
+import { menuItems } from '../../../../Data/Layout/SidebarMenuItems';
 
 export default function FullSearch() {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export default function FullSearch() {
                 suggestionArray.push({ icon: icon, title: item.title || '', path: item.path || "" });
             }
         };
-        menuList?.forEach((item) => {
+        menuItems?.forEach((item) => {
             item.items?.forEach((child) => {
                 getAllLink(child, child.icon);
             });

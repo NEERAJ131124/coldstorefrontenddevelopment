@@ -14,7 +14,7 @@ export default function PixelstarpSearch({ paginatedResults, searchText }: any) 
       };
       
     return (
-        <Col xxl={12} xl={6} className="box-col-12">
+        <Col xxl={12} xl={12} sm={12} className="box-col-12">
             {searchText && (
                 <H6 className="f-w-700">{`Search result for "${searchText}"`}</H6>
             )}

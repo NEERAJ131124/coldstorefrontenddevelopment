@@ -239,7 +239,7 @@ export const ToDoFilter: string = "To Do filter";
 export const ToDoList: string = "To Do List";
 
 //Search Pages
-export const SearchPagesTitle: string = "Search Pages";
+export const SearchPagesTitle: string = "Search Result";
 export const SearchWebsiteTitle: string = "Search Facility"
 export const ProductPageTitle: string = "Product Page";
 //Calendar
