@@ -28,6 +28,7 @@ export const getCurrentLocation = (): Promise<{ latitude: number; longitude: num
     });
 };
 
+ 
 // export function createNameProfile(word: string,word2:string): string {
 //     if (word.trim().length === 0) {
 //         throw new Error("Input must be a non-empty string.");

@@ -1,22 +1,15 @@
 
 import { Col, Label } from "reactstrap";
 import { Btn, H6, LI, UL } from "../../../../../AbstractElements";
+import { DistanceComponent } from "../../../../../CommonElements/DistanceMeasure/DistanceComponent";
 
 export default function PixelstarpSearch({ paginatedResults, searchText }: any) {
-    // const handleOpenGoogleMaps = ( latitude:any, longitude : any) => {
-    //     debugger;
-    //     // Construct Google Maps URL with the provided coordinates
-    //     const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
-    //     window.open(googleMapsUrl, "_blank"); // Open in a new tab
-    // };
+   
     const handleOpenGoogleMapsAppAddress = (address: string) => {
-        // Encode the address
         const encodedAddress = encodeURIComponent(address);
       
-        // Google Maps mobile deep link URL format
         const googleMapsUrl = `https://www.google.com/maps?q=${encodedAddress}`;
       
-        // Open in a new tab or app
         window.open(googleMapsUrl, "_blank");
       };
       
@@ -34,6 +27,7 @@ export default function PixelstarpSearch({ paginatedResults, searchText }: any) 
                             {item.GeoLocation.City.toLocaleUpperCase()} |{" "}
                             {item.GeoLocation.State.StateName.toLocaleUpperCase()} |{" "}
                             {item.GeoLocation.Country.CountryName.toLocaleUpperCase()}
+                            {/* <DistanceComponent latitude={item.GeoLocation.Latitude} longitude={item.GeoLocation.Longitude}/> */}
                         </Label>
                         <div className="star-ratings">
                             <UL className="search-info simple-list flex-row">

@@ -240,7 +240,7 @@ export const ToDoList: string = "To Do List";
 
 //Search Pages
 export const SearchPagesTitle: string = "Search Pages";
-export const SearchWebsiteTitle: string = "Search Website"
+export const SearchWebsiteTitle: string = "Search Facility"
 export const ProductPageTitle: string = "Product Page";
 //Calendar
 export const CalenderBasicTitle: string = "Calender Basic";
