@@ -2567,3 +2567,35 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+.testimonial-item {
+  text-align: center;
+}
+
+.testimonial-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.prev-btn,
+.next-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: #308e87;
+  color: white;
+}
+
+.testimonial-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}

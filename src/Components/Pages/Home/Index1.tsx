@@ -17,6 +17,7 @@ import { useState } from 'react';
 import PillTabContent from '../../UiKits/TabBootstrap/PillsTab/PillTabContent';
 import JustifyTabContent from '../../UiKits/TabBootstrap/JustifyTab/JustifyTabContent';
 import HomeTabContent from './component/HomeTabContent';
+import Testimonials from './component/Testimonials';
 
 
 
@@ -385,34 +386,7 @@ export default function HomePageSample() {
         </section> */}
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="testimonials section">
-          <div className="container section-title" data-aos="fade-up">
-            <h2>Testimonials</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-          </div>
-          <div className="container" data-aos="fade-up" data-aos-delay={100}>
-            <div className="swiper init-swiper">
-              <div className="swiper-wrapper">
-                <div className="swiper-slide">
-                  <div className="testimonial-item">
-                    <img src="assets/img/testimonials/testimonials-1.jpg" className="testimonial-img" alt="" />
-                    <h3>Aman Singh</h3>
-                    <h4>Ceo &amp; Founder</h4>
-                    <div className="stars">
-                      <i className="bi bi-star-fill" /><i className="bi bi-star-fill" /><i className="bi bi-star-fill" /><i className="bi bi-star-fill" /><i className="bi bi-star-fill" />
-                    </div>
-                    <p>
-                      <i className="bi bi-quote quote-icon-left" />
-                      <span>"The services provided were exceptional! The team went above and beyond to ensure our needs were met. Highly recommend to anyone seeking professionalism and quality!"</span>
-                      <i className="bi bi-quote quote-icon-right" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="swiper-pagination" />
-            </div>
-          </div>
-        </section>
+        <Testimonials/>
       </main>
     </div>
   );
