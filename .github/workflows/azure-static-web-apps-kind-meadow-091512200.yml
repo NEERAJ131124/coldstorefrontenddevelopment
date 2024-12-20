@@ -35,8 +35,8 @@ jobs:
           CI: false
 
       # Copy routes.json to the build directory
-      - name: Copy routes.json to Build Directory
-        run: cp routes.json build/
+      # - name: Copy routes.json to Build Directory
+      #   run: cp routes.json build/
 
       # Deploy to Azure Static Web Apps using the CLI
       - name: Build And Deploy
