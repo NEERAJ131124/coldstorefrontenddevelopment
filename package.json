@@ -9,6 +9,7 @@
     "@fullcalendar/interaction": "^6.1.11",
     "@fullcalendar/react": "^6.1.11",
     "@fullcalendar/timegrid": "^6.1.11",
+    "@mui/icons-material": "^6.2.1",
     "@react-google-maps/api": "^2.19.3",
     "@reactour/tour": "^3.6.1",
     "@reduxjs/toolkit": "^2.0.1",
