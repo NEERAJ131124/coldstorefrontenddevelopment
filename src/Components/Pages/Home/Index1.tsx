@@ -62,7 +62,7 @@ export default function HomePageSample() {
         </section>
         {/* /Clients Section */}
         {/* About Section */}
-        <section id="about" className="about section section-bg dark-background">
+         <section id="about" className="about section section-bg dark-background">
           <div className="container position-relative">
             <div className="row gy-5">
               <div className="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay={100}>
