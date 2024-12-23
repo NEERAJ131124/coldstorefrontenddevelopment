@@ -13,6 +13,7 @@ import RegisterWizard from '../Components/Pages/Others/Authentication/RegisterWi
 import RegisterSimple from '../Components/Pages/Others/Authentication/RegisterSimple';
 import HomePage from '../Pages/Pages/Home';
 import ContactUs from '../Components/Pages/Others/Authentication/ContactUs/Index';
+import PaymentComponent from '../Pages/Applications/Contacts/Test';
 
 export default function Routers() {
     const token = decodeToken()
@@ -38,6 +39,8 @@ export default function Routers() {
                 <Route path={`${process.env.PUBLIC_URL}/register`} element={<RegisterSimple />} />
                 <Route path={`${process.env.PUBLIC_URL}/home`} element={<HomePage />} />
                 <Route path={`${process.env.PUBLIC_URL}/contactus`} element={<ContactUs />} />
+                <Route path={`${process.env.PUBLIC_URL}/test`} element={<PaymentComponent />} />
+
 
             </Routes>
         </BrowserRouter>

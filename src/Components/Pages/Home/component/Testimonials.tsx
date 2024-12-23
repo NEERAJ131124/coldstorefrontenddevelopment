@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import testinmonial1 from '../../../../assets/img/testimonials/testimonials-1.jpg';
 import testinmonial2 from '../../../../assets/img/testimonials/testimonials-2.jpg';
 import testinmonial3 from '../../../../assets/img/testimonials/testimonials-3.jpg';
-import testinmonial4 from '../../../../assets/img/testimonials/testimonials-4.jpg';
-import testinmonial5 from '../../../../assets/img/testimonials/testimonials-5.jpg';
+// import testinmonial4 from '../../../../assets/img/testimonials/testimonials-4.jpg';
+// import testinmonial5 from '../../../../assets/img/testimonials/testimonials-5.jpg';
 import { P } from '../../../../AbstractElements';
 
 const testimonialsData = [

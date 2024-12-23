@@ -13,12 +13,14 @@ import {
   verifyMobileOTP,
 } from "../../../../../api-service/Auth/Index";
 import { LoginFormProp } from "../../../../../Types/Others.type";
+import { LinearProgress } from "@mui/material";
 
 const SignUpForm = ({ logoClass }: LoginFormProp) => {
   const navigate = useNavigate();
   const [isOTP, setIsOTP] = useState(true);
   const [isPhoneVerified, setIsPhoneVerified] = useState(false);
   const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [verifyData, setVerifyData] = useState({
     Email: "",
@@ -59,6 +61,7 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
 
   const handleSubmit = async (values: typeof initialValues) => {
     try {
+      setIsLoading(true)
       if (isOTP) {
         const requestData = { Email: values.email, Mobile: values.mobile };
         const response = await sendSignUpOTP(requestData);
@@ -81,6 +84,7 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
     } catch (error) {
       console.error("Error:", error);
     }
+    setIsLoading(false)
   };
 
   const resendSignUpOTP = async () => {
@@ -90,6 +94,7 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
   };
 
   const verifyMobile = async (value: string) => {
+    setIsLoading(true)
     if (value.length === 6) {
       const request = {
         PhoneNumber: verifyData.PhoneNumber,
@@ -110,9 +115,11 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
     } else {
       setIsPhoneVerified(false);
     }
+    setIsLoading(false)
   };
 
   const verifyEmail = async (value: string) => {
+    setIsLoading(true)
     if (value.length === 6) {
       const request = {
         Email: verifyData.Email,
@@ -133,6 +140,8 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
     } else {
       setIsEmailVerified(false);
     }
+    setIsLoading(false)
+
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, maxLength: number) => {
@@ -234,6 +243,13 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
                 </>
               )}
               <div className="text-end mt-3 d-flex">
+
+                  {
+                    isLoading && 
+                    <div className={'mb-3'}>
+                      <LinearProgress/>
+                    </div>
+                  }
                 {!isOTP && (
                   <Btn
                     color="primary"
@@ -263,8 +279,8 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
                 )}
               </div>
               <div className="mt-3" >
-                                By continuing, I agree with your <Link to={'/terms'}><u>Terms of Service</u></Link> , <Link to={'/privacypolicy'}><u>Privacy Policy</u>.</Link> & <Link to={'/refundpolicy'}><u>Refund Policy</u>.</Link>
-                            </div>
+                 By continuing, I agree with your <Link to={'/terms'}><u>Terms of Service</u></Link> , <Link to={'/privacypolicy'}><u>Privacy Policy</u>.</Link> & <Link to={'/refundpolicy'}><u>Refund Policy</u>.</Link>
+              </div>
               <div className="mt-3 text-center">
                 Already have an account? <Link to="/login">Login</Link>
               </div>

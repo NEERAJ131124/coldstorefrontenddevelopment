@@ -751,7 +751,7 @@ section,
 --------------------------------------------------------------*/
 .section-title {
   text-align: center;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   position: relative;
 }
 
@@ -2601,3 +2601,5 @@ section,
   border-radius: 50%;
   object-fit: cover;
 }
+
+

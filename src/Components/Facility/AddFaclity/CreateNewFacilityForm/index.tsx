@@ -9,6 +9,8 @@ import { getCountry, getStateByCountryId } from "../../../../api-service/Locatio
 import { getCurrentLocation } from "../../../../Common/methods";
 import { toast } from "react-toastify";
 import { FacilityListData } from "../../../../Types/Facility.type";
+import { Backdrop, CircularProgress } from "@mui/material";
+import Loader from "../../../../Layout/Loader";
 
 interface CreateNewFacilityFormProps {
     setIsCreate: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,12 +40,14 @@ interface FacilityFormData {
     CapacityUnit: string;
 }
 
-const CreateNewFacilityForm: React.FC<CreateNewFacilityFormProps> = ({ setIsCreate }) =>    {
+const CreateNewFacilityForm: React.FC<CreateNewFacilityFormProps> = ({ setIsCreate }) => {
     const { id } = useParams();
     const [item, setItem] = useState<FacilityListData | null>(null);
     const { register, handleSubmit, formState: { errors }, setValue, clearErrors, watch } = useForm<FacilityFormData>();
     const navigate = useNavigate();
     const [stateId, setStateId] = useState("");
+    const [IsLoading, setIsLoading] = useState(false);
+
     const [unit, setUnit] = useState("Tons");
     const [storageCap, setStorageCap] = useState("");
     const [StorageTypeId, setStorageTypeId] = useState("");
@@ -62,8 +66,8 @@ const CreateNewFacilityForm: React.FC<CreateNewFacilityFormProps> = ({ setIsCrea
     }
 
     const getFacilityDetail = async (id: any) => {
+        setIsLoading(true)
         //    resetForm();
-
         const response = await getFacilityDetails(id, navigate)
         if (response != null) {
             const facility = response?.data?.facility;
@@ -100,6 +104,7 @@ const CreateNewFacilityForm: React.FC<CreateNewFacilityFormProps> = ({ setIsCrea
             });
 
         }
+        setIsLoading(false)
     }
     useEffect(() => {
         if (id) {
@@ -145,6 +150,7 @@ const CreateNewFacilityForm: React.FC<CreateNewFacilityFormProps> = ({ setIsCrea
         const response = await getStateByCountryId(id, navigate);
         if (response != null) {
             setStateList(response.data);
+
         }
         else {
             setStateList([]);
@@ -156,12 +162,12 @@ const CreateNewFacilityForm: React.FC<CreateNewFacilityFormProps> = ({ setIsCrea
         getStateList(e.target.value);
     }
     const addFacility = async (data: any) => {
+        setIsLoading(true)
         if (data._id) {
             debugger
             data.StorageCapacities = storagetypeListCopy;
             console.log(data)
             const response = await updateFacility(data, navigate, resetForm);
-            console.log(response)
         }
         else {
             const location = await getCurrentLocation();
@@ -171,6 +177,7 @@ const CreateNewFacilityForm: React.FC<CreateNewFacilityFormProps> = ({ setIsCrea
             console.log(data)
             const response = await submitFacility(data, navigate, resetForm);
         }
+        setIsLoading(false)
     };
     const clearStorageTypeForm = () => {
         setUnit('Tons');
@@ -218,7 +225,15 @@ const CreateNewFacilityForm: React.FC<CreateNewFacilityFormProps> = ({ setIsCrea
     }, [])
 
     return (
+
         <Form className="theme-form basic-form mb-4" onSubmit={handleSubmit(addFacility)}>
+            {
+                IsLoading && <Row>
+                    <Col sm={12} md={12}>
+                        <Loader />
+                    </Col>
+                </Row>
+            }
             <Row>
                 <Col sm={6} md={6}>
                     <input
@@ -543,6 +558,7 @@ const CreateNewFacilityForm: React.FC<CreateNewFacilityFormProps> = ({ setIsCrea
                 </Col>
             </Row>
         </Form>
+
     );
 }
 

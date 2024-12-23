@@ -14,6 +14,8 @@ import { Card, CardBody, Col, Container, Row } from 'reactstrap';
 import { useState } from 'react';
 import HomeTabContent from './component/HomeTabContent';
 import Testimonials from './component/Testimonials';
+import Stats from './component/Stats';
+import Services from './component/Services';
 
 
 export default function HomePageSample() {
@@ -33,7 +35,7 @@ export default function HomePageSample() {
               {/* 🌍  */}
               <div className="col-lg-8">
                 <H2 data-aos="fade-up" data-aos-delay={100}>Be a Part of the International Food Supply Chain</H2>
-                <p data-aos="fade-up" data-aos-delay={200}>Manage your cold store with our Digital Solution</p>
+                <P data-aos="fade-up" data-aos-delay={200}>Manage your cold store with our Digital Solution</P>
                 <div className="d-flex mt-4" data-aos="fade-up" data-aos-delay={300}>
                   <a href="#" onClick={() => { handleRegister() }} className="btn-get-started">Register now</a>
                   <a href="#" onClick={() => { handleRegister() }} className="btn-get-started text-white fs-6 pointer mx-3" style={{ background: '#308e87' }}>Lifetime onboarding fee of 999 INR (Non Refundable)</a>
@@ -56,13 +58,7 @@ export default function HomePageSample() {
                 <div className="swiper-slide"><img src={Client3} className="img-fluid" alt="" /></div>
               </Col>
             </Row>
-               
-                {/* <div className="swiper-slide"><img src={Client4} className="img-fluid" alt="" /></div>
-                <div className="swiper-slide"><img src={Client5} className="img-fluid" alt="" /></div> */}
-                {/* <div className="swiper-slide"><img src={Client1} className="img-fluid" alt="" /></div>
-                <div className="swiper-slide"><img src={Client7} className="img-fluid" alt="" /></div>
-                <div className="swiper-slide"><img src={Client8} className="img-fluid" alt="" /></div> */}
-              </div>
+          </div>
         </section>
         {/* /Clients Section */}
         {/* About Section */}
@@ -71,10 +67,10 @@ export default function HomePageSample() {
             <div className="row gy-5">
               <div className="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay={100}>
                 <h3 className="mb-3">✨ Benefits:</h3>
-                <p>
+                <P>
                   <span className="me-2 text-primary fs-5">✔️</span>
                   Online presence and discovery of your cold store
-                </p>
+                </P>
               </div>
               <div className="col-xl-7" data-aos="fade-up" data-aos-delay={200}>
                 <div className="row gy-4">
@@ -95,56 +91,15 @@ export default function HomePageSample() {
                         Online monitoring system (Temperature / Humidity / CO2, etc.)
                       </li>
                     </ul>
-                  </div>{/* Icon-Box */}
-
-                  {/* <div className="col-md-6 icon-box position-relative">
-                    <i className="bi bi-easel" />
-                    <h4><a href="#" className="stretched-link">Beatae veritatis</a></h4>
-                    <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-                  </div> */}
-                  {/* Icon-Box */}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>{/* /About Section */}
-        {/* Stats Section */}
-        {/* <section id="stats" className="stats section">
-          <div className="container" data-aos="fade-up" data-aos-delay={100}>
-            <div className="row gy-4">
-              <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                <i className="bi bi-emoji-smile" />
-                <div className="stats-item">
-                  <span data-purecounter-start={0} data-purecounter-end={232} data-purecounter-duration={1} className="purecounter" />
-                  <p>Happy Clients</p>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                <i className="bi bi-journal-richtext" />
-                <div className="stats-item">
-                  <span data-purecounter-start={0} data-purecounter-end={521} data-purecounter-duration={1} className="purecounter" />
-                  <p>Projects</p>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                <i className="bi bi-headset" />
-                <div className="stats-item">
-                  <span data-purecounter-start={0} data-purecounter-end={1463} data-purecounter-duration={1} className="purecounter" />
-                  <p>Hours Of Support</p>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                <i className="bi bi-people" />
-                <div className="stats-item">
-                  <span data-purecounter-start={0} data-purecounter-end={15} data-purecounter-duration={1} className="purecounter" />
-                  <p>Hard Workers</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
+        </section>
+        {/* <Stats/> */}
         {/* Tabs Section */}
-        <section className="tabs section">
+        {/* <section className="tabs section">
           <Card>
             <CardBody>
               <Container>
@@ -156,13 +111,14 @@ export default function HomePageSample() {
               </Container>
             </CardBody>
           </Card>
-        </section>
-      
+        </section> */}
+
         {/* Services Section */}
-        <section id="services" className="services section section-bg dark-background">
+        {/* <Services/> */}
+        {/* <section id="services" className="services section section-bg dark-background">
           <div className="container section-title" data-aos="fade-up">
             <h2>Services</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <P>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</P>
           </div>
           <div className="container">
             <div className="row gy-4">
@@ -170,8 +126,8 @@ export default function HomePageSample() {
                 <div className="service-item d-flex position-relative h-100">
                   <i className="bi bi-briefcase icon flex-shrink-0" />
                   <div>
-                    <h4 className="title"><a href="service-details.html" className="stretched-link">Lorem Ipsum</a></h4>
-                    <p className="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                    <h4 className="title"><a href="#" className="stretched-link">Lorem Ipsum</a></h4>
+                    <P className="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</P>
                   </div>
                 </div>
               </div>
@@ -179,8 +135,8 @@ export default function HomePageSample() {
                 <div className="service-item d-flex position-relative h-100">
                   <i className="bi bi-card-checklist icon flex-shrink-0" />
                   <div>
-                    <h4 className="title"><a href="service-details.html" className="stretched-link">Dolor Sitema</a></h4>
-                    <p className="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                    <h4 className="title"><a href="#" className="stretched-link">Dolor Sitema</a></h4>
+                    <P className="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</P>
                   </div>
                 </div>
               </div>
@@ -188,8 +144,8 @@ export default function HomePageSample() {
                 <div className="service-item d-flex position-relative h-100">
                   <i className="bi bi-bar-chart icon flex-shrink-0" />
                   <div>
-                    <h4 className="title"><a href="service-details.html" className="stretched-link">Sed ut perspiciatis</a></h4>
-                    <p className="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                    <h4 className="title"><a href="#" className="stretched-link">Sed ut perspiciatis</a></h4>
+                    <P className="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</P>
                   </div>
                 </div>
               </div>
@@ -197,8 +153,8 @@ export default function HomePageSample() {
                 <div className="service-item d-flex position-relative h-100">
                   <i className="bi bi-binoculars icon flex-shrink-0" />
                   <div>
-                    <h4 className="title"><a href="service-details.html" className="stretched-link">Magni Dolores</a></h4>
-                    <p className="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                    <h4 className="title"><a href="#" className="stretched-link">Magni Dolores</a></h4>
+                    <P className="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</P>
                   </div>
                 </div>
               </div>
@@ -206,8 +162,8 @@ export default function HomePageSample() {
                 <div className="service-item d-flex position-relative h-100">
                   <i className="bi bi-brightness-high icon flex-shrink-0" />
                   <div>
-                    <h4 className="title"><a href="service-details.html" className="stretched-link">Nemo Enim</a></h4>
-                    <p className="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                    <h4 className="title"><a href="#" className="stretched-link">Nemo Enim</a></h4>
+                    <P className="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</P>
                   </div>
                 </div>
               </div>
@@ -215,21 +171,21 @@ export default function HomePageSample() {
                 <div className="service-item d-flex position-relative h-100">
                   <i className="bi bi-calendar4-week icon flex-shrink-0" />
                   <div>
-                    <h4 className="title"><a href="service-details.html" className="stretched-link">Eiusmod Tempor</a></h4>
-                    <p className="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+                    <h4 className="title"><a href="#" className="stretched-link">Eiusmod Tempor</a></h4>
+                    <P className="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</P>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* /Services Section */}
         {/* Portfolio Section */}
 
         {/* <section id="portfolio" className="portfolio section">
           <div className="container section-title" data-aos="fade-up">
             <h2>Portfolio</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <P>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</P>
           </div>
           <div className="container">
             <div className="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
@@ -246,7 +202,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/app-1.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>App 1</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -257,7 +213,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/product-1.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>Product 1</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/product-1.jpg" title="Product 1" data-gallery="portfolio-gallery-product" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -268,7 +224,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/branding-1.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>Branding 1</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -279,7 +235,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/books-1.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>Books 1</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-book" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -290,7 +246,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/app-2.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>App 2</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery-app" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -301,7 +257,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/product-2.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>Product 2</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/product-2.jpg" title="Product 2" data-gallery="portfolio-gallery-product" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -312,7 +268,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/branding-2.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>Branding 2</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/branding-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -323,7 +279,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/books-2.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>Books 2</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-book" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -334,7 +290,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/app-3.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>App 3</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery-app" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -345,7 +301,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/product-3.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>Product 3</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery-product" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -356,7 +312,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/branding-3.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>Branding 3</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/branding-3.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -367,7 +323,7 @@ export default function HomePageSample() {
                     <img src="assets/img/portfolio/books-3.jpg" className="img-fluid" alt="" />
                     <div className="portfolio-info">
                       <h4>Books 3</h4>
-                      <p>Lorem ipsum, dolor sit amet consectetur</p>
+                      <P>Lorem ipsum, dolor sit amet consectetur</P>
                       <a href="assets/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery-book" className="glightbox preview-link"><i className="bi bi-zoom-in" /></a>
                       <a href="portfolio-details.html" title="More Details" className="details-link"><i className="bi bi-link-45deg" /></a>
                     </div>
@@ -379,7 +335,7 @@ export default function HomePageSample() {
         </section> */}
 
         {/* Testimonials Section */}
-        <Testimonials/>
+        {/* <Testimonials /> */}
       </main>
     </div>
   );

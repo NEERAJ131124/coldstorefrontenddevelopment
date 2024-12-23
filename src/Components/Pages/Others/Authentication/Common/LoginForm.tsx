@@ -11,11 +11,12 @@ import CommonLogo from "./CommonLogo";
 import { FormGroup } from "reactstrap";
 import { toast } from "react-toastify";
 import { sendOTP, verifyOTP } from "../../../../../api-service/Auth/Index";
-import { Loader } from "react-feather";
+import { LinearProgress } from "@mui/material";
 
 const LoginForm = ( { logoClass }: LoginFormProp) => {
   const navigate = useNavigate();
   const [isOTP, setIsOTP] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Initial form values
   const initialValues = {
@@ -34,13 +35,14 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
   
   const handleSubmit = async (values: typeof initialValues) => {
     try {
+      setIsLoading(true)
       if (isOTP) {
         // Send OTP API call
         const requestData = {
           Email: values.email, // Email field from the form
         };
         const response = await sendOTP(requestData);
-        console.log(response)
+        setIsLoading(false)
         toast.success("OTP sent successfully!");
         setIsOTP(false); // Show OTP field after sending OTP
       } 
@@ -51,10 +53,11 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
           Otp: values.otp, // OTP field from the form
         };
        await verifyOTP(requestData,navigate);
+          setIsLoading(false)
       }
     } catch (error) {
+      setIsLoading(false)
       console.error(error);
-      
     }
   };
 
@@ -62,6 +65,7 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
     <div>
       <div className="login-main">
       <CommonLogo logoClass={logoClass} />
+
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -95,11 +99,18 @@ const LoginForm = ( { logoClass }: LoginFormProp) => {
               
               </div>
               <div className="text-end mt-3">
+                {
+                  isLoading && 
+                  <div className={'mb-3'}>
+                    <LinearProgress/>
+                  </div>
+                }
+                
                 <Btn color="primary" block className="w-100" disabled={isSubmitting}>
                   {isOTP ? "Send OTP" : "Verify OTP"}
                 </Btn>
               </div>
-              <div className="mt-3" >
+              <div className="mt-3">
                   By continuing, I agree with your <Link to={'/terms'}><u>Terms of Service</u></Link> , <Link to={'/privacypolicy'}><u>Privacy Policy</u>.</Link> & <Link to={'/refundpolicy'}><u>Refund Policy</u>.</Link>
               </div>
               <div className="mt-3 text-center">
