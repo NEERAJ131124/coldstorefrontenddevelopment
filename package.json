@@ -6,9 +6,12 @@
   "dependencies": {
     "@azure/msal-browser": "^3.27.0",
     "@azure/msal-react": "^2.2.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@fullcalendar/interaction": "^6.1.11",
     "@fullcalendar/react": "^6.1.11",
     "@fullcalendar/timegrid": "^6.1.11",
+    "@mui/material": "^6.2.1",
     "@mui/icons-material": "^6.2.1",
     "@react-google-maps/api": "^2.19.3",
     "@reactour/tour": "^3.6.1",
