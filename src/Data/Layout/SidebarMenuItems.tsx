@@ -1,4 +1,5 @@
 import { SidebarMenuItem } from "../../Types/Layout.type";
+import { SearchWebsiteTitle } from "../../Utils/Constants";
 
 export const menuItems: SidebarMenuItem[] = [
     {
@@ -128,7 +129,7 @@ export const menuItems: SidebarMenuItem[] = [
             // { path: `${process.env.PUBLIC_URL}/app/calendar`, icon: "Calendar", type: "link", title: "Calendar", id: 13 },
             // { path: `${process.env.PUBLIC_URL}/app/social_app`, icon: "Camera", type: "link", title: "Social App", id: 14, bookmark: true, },
             // { path: `${process.env.PUBLIC_URL}/app/todo`, icon: "Edit", type: "link", title: "To-Do", id: 15, bookmark: true, },
-            { path: `${process.env.PUBLIC_URL}/app/search_result`, icon: "Search-sidebar", type: "link", title: "Search Result", id: 16 },
+            { path: `${process.env.PUBLIC_URL}/app/search_result`, icon: "Search-sidebar", type: "link", title: SearchWebsiteTitle, id: 16 },
         ],
     },
     // {

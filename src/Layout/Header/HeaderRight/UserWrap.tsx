@@ -10,7 +10,7 @@ import { createNameProfileImage } from '../../../Common/methods'
 
 export default function UserWrap() {
     const [open, setOpen] = useState(false)
-    const [user, setUser] =  useState<UserResponse | null>(null);
+    const [user, setUser] = useState<UserResponse | null>(null);
     const navigate = useNavigate()
     const toggle = () => {
         setOpen(!open)
@@ -18,22 +18,22 @@ export default function UserWrap() {
     const logout = () => {
         localStorage.clear();
     }
-        const getUser= async()=>{
-            const response= await getUserProfile(navigate)
-            if(response!=null){
-                setUser(response.data)
-            }
+    const getUser = async () => {
+        const response = await getUserProfile(navigate)
+        if (response != null) {
+            setUser(response.data)
         }
+    }
 
-        useEffect(() => {
-            getUser()
-        }, [])
+    useEffect(() => {
+        getUser()
+    }, [])
 
     return (
         <li className="profile-nav custom-dropdown">
             <div className="user-wrap" onClick={toggle}>
                 <div className="user-img">
-                    <Image src={createNameProfileImage(user?.FirstName??"U",user?.LastName??"K")} alt="user" />
+                    <Image src={createNameProfileImage(user?.FirstName ?? "U", user?.LastName ?? "K")} alt="user" />
                 </div>
                 <div className="user-content">
                     <H6>{user?.FirstName}</H6>
@@ -50,7 +50,7 @@ export default function UserWrap() {
                             </Link>
                         </LI>
                     ))} */}
-                       <LI className="d-flex" o>
+                    <LI className="d-flex" o>
                         <SvgIcon className='svg-color' iconId='Profile' />
                         <Link className="ms-2" to={`${process.env.PUBLIC_URL}/users/user_profile`}>
                             {'Account'}

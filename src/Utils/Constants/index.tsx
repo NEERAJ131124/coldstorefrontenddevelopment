@@ -352,7 +352,7 @@ export const ProjectListTitle: string = "Project list";
 export const FacilityListTitle: string = "Facility list";
 
 export const CreateNewProject: string = "Create New Project";
-export const AddNewFacility: string = "Add New Facility";
+export const AddNewFacility: string = "Add Facility";
 
 export const ProjectTitleLabel: string = "Project Title";
 export const ClientName: string = "Client name";

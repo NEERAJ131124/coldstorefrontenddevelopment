@@ -9,6 +9,7 @@ import Loader from '../../../../Layout/Loader'
 import { DoPayment, FacilityListTitle, FacilityTitle } from '../../../../Utils/Constants'
 import Breadcrumbs from '../../../../CommonElements/Breadcrumbs'
 import { ArrowDownLeft, ArrowLeft } from 'react-feather'
+import BackButton from '../../../../Common/BackButton'
 
 export default function ViewFacility() {
     const { id } = useParams();
@@ -46,9 +47,10 @@ export default function ViewFacility() {
                             </Col>
                             <Col md={6} className='d-md-block d-none'>
                                 <FormGroup className="mb-0 me-0">
-                                    <Link className="btn btn-primary d-flex align-items-center" to={`${process.env.PUBLIC_URL}/facility/view`}>
+                                    <BackButton label='Back'></BackButton>
+                                    {/* <Link className="btn btn-primary d-flex align-items-center" to={`${process.env.PUBLIC_URL}/facility/view`}>
                                         <ArrowLeft /> Back
-                                    </Link>
+                                    </Link> */}
                                 </FormGroup>
                             </Col>
                         </Row>

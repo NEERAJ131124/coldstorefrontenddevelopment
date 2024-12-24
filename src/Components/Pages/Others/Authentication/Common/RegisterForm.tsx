@@ -8,9 +8,7 @@ import { FormGroup } from "reactstrap";
 import { toast } from "react-toastify";
 import {
   sendSignUpOTP,
-  submitSignUp,
-  verifyEmailOTP,
-  verifyMobileOTP,
+  submitSignUp
 } from "../../../../../api-service/Auth/Index";
 import { LoginFormProp } from "../../../../../Types/Others.type";
 import { LinearProgress } from "@mui/material";
@@ -18,16 +16,10 @@ import { LinearProgress } from "@mui/material";
 const SignUpForm = ({ logoClass }: LoginFormProp) => {
   const navigate = useNavigate();
   const [isOTP, setIsOTP] = useState(true);
-  const [isPhoneVerified, setIsPhoneVerified] = useState(false);
-  const [isEmailVerified, setIsEmailVerified] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [verifyData, setVerifyData] = useState({
-    Email: "",
-    PhoneNumber: "",
-    FirstName: "",
-    LastName: "",
-  });
+  // const [isPhoneVerified, setIsPhoneVerified] = useState(false);
+  // const [isEmailVerified, setIsEmailVerified] = useState(false);
 
   const initialValues = {
     firstName: "",
@@ -60,8 +52,8 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
   });
 
   const handleSubmit = async (values: typeof initialValues) => {
+    setIsLoading(true)
     try {
-      setIsLoading(true)
       if (isOTP) {
         const requestData = { Email: values.email, Mobile: values.mobile };
         const response = await sendSignUpOTP(requestData);
@@ -69,17 +61,25 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
           toast.success("OTP sent successfully!");
           setIsOTP(false);
         }
-        setVerifyData({
-          ...verifyData,
+      } 
+      else {
+       const data ={
           Email: values.email,
           PhoneNumber: values.mobile,
           FirstName: values.firstName,
           LastName: values.lastName,
-        });
-      } else {
-        await submitSignUp(verifyData, navigate);
-        toast.success("Account created successfully!");
-        navigate("/login");
+          EmailOtp: values.emailOtp,
+          PhoneOtp:  values.mobileOtp,
+        };
+        console.log(data)
+        const response=await submitSignUp(data, navigate);
+        if(response?.data?.success){
+          toast.success(response.data.message);
+          navigate("/login");
+        }
+        else{
+          toast.error(response?.data?.message);
+        }
       }
     } catch (error) {
       console.error("Error:", error);
@@ -88,61 +88,57 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
   };
 
   const resendSignUpOTP = async () => {
-    const requestData = { Email: verifyData.Email, Mobile: verifyData.PhoneNumber };
-    await sendSignUpOTP(requestData);
-    toast.success("OTP resent successfully!");
+    setIsOTP(true)
+    // const requestData = { Email: verifyData.Email, Mobile: verifyData.PhoneNumber };
+    // await sendSignUpOTP(requestData);
+    // toast.success("OTP resent successfully!");
   };
 
-  const verifyMobile = async (value: string) => {
-    setIsLoading(true)
-    if (value.length === 6) {
-      const request = {
-        PhoneNumber: verifyData.PhoneNumber,
-        PhoneOtp: value,
-      };
-      try {
-        const response = await verifyMobileOTP(request, navigate);
-        if (response.success) {
-          setIsPhoneVerified(true);
-          toast.success(response.message);
-        } else {
-          setIsPhoneVerified(false);
-        }
-      } catch (error) {
-        console.error("Mobile OTP Verification Failed:", error);
-        setIsPhoneVerified(false);
-      }
-    } else {
-      setIsPhoneVerified(false);
-    }
-    setIsLoading(false)
-  };
+  // const verifyMobile = async (value: string) => {
+  //   if (value.length === 6) {
+  //     const request = {
+  //       PhoneNumber: verifyData.PhoneNumber,
+  //       PhoneOtp: value,
+  //     };
+  //     try {
+  //       const response = await verifyMobileOTP(request, navigate);
+  //       if (response.success) {
+  //         setIsPhoneVerified(true);
+  //         toast.success(response.message);
+  //       } else {
+  //         setIsPhoneVerified(false);
+  //       }
+  //     } catch (error) {
+  //       console.error("Mobile OTP Verification Failed:", error);
+  //       setIsPhoneVerified(false);
+  //     }
+  //   } else {
+  //     setIsPhoneVerified(false);
+  //   }
+  // };
 
-  const verifyEmail = async (value: string) => {
-    setIsLoading(true)
-    if (value.length === 6) {
-      const request = {
-        Email: verifyData.Email,
-        EmailOtp: value,
-      };
-      try {
-        const response = await verifyEmailOTP(request, navigate);
-        if (response.success) {
-          setIsEmailVerified(true);
-          toast.success(response.message);
-        } else {
-          setIsEmailVerified(false);
-        }
-      } catch (error) {
-        console.error("Email OTP Verification Failed:", error);
-        setIsEmailVerified(false);
-      }
-    } else {
-      setIsEmailVerified(false);
-    }
-    setIsLoading(false)
-
-  };
+  // const verifyEmail = async (value: string) => {
+  //   if (value.length === 6) {
+  //     const request = {
+  //       Email: verifyData.Email,
+  //       EmailOtp: value,
+  //     };
+  //     try {
+  //       const response = await verifyEmailOTP(request, navigate);
+  //       if (response.success) {
+  //         setIsEmailVerified(true);
+  //         toast.success(response.message);
+  //       } else {
+  //         setIsEmailVerified(false);
+  //       }
+  //     } catch (error) {
+  //       console.error("Email OTP Verification Failed:", error);
+  //       setIsEmailVerified(false);
+  //     }
+  //   } else {
+  //     setIsEmailVerified(false);
+  //   }
+  // };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, maxLength: number) => {
     const { name, value } = e.target;
@@ -220,7 +216,7 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
                       onChange={(e:any) => {
                         handleInputChange(e, 6);
                         handleChange(e);
-                        verifyEmail(e.target.value);
+                        // verifyEmail(e.target.value);
                       }}
                     />
                     <ErrorMessage name="emailOtp" component="div" className="text-danger" />
@@ -235,21 +231,17 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
                       onChange={(e:any) => {
                         handleInputChange(e, 6);
                         handleChange(e);
-                        verifyMobile(e.target.value);
+                        // verifyMobile(e.target.value);
                       }}
                     />
                     <ErrorMessage name="mobileOtp" component="div" className="text-danger" />
                   </FormGroup>
                 </>
               )}
+              <div className="mt-3 text-center">
+                {isLoading && <LinearProgress />}
+              </div>
               <div className="text-end mt-3 d-flex">
-
-                  {
-                    isLoading && 
-                    <div className={'mb-3'}>
-                      <LinearProgress/>
-                    </div>
-                  }
                 {!isOTP && (
                   <Btn
                     color="primary"
@@ -259,7 +251,7 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
                     onClick={resendSignUpOTP}
                     disabled={isSubmitting}
                   >
-                    Resend
+                    Back
                   </Btn>
                 )}
                 {isOTP ? (
@@ -272,14 +264,14 @@ const SignUpForm = ({ logoClass }: LoginFormProp) => {
                     block
                     className="w-100"
                     type="submit"
-                    disabled={isSubmitting || !isEmailVerified || !isPhoneVerified}
+                    disabled={isSubmitting}
                   >
                     Sign Up
                   </Btn>
                 )}
               </div>
               <div className="mt-3" >
-                 By continuing, I agree with your <Link to={'/terms'}><u>Terms of Service</u></Link> , <Link to={'/privacypolicy'}><u>Privacy Policy</u>.</Link> & <Link to={'/refundpolicy'}><u>Refund Policy</u>.</Link>
+                By continuing, I agree with your <Link to={'/terms'}><u>Terms of Service</u></Link> , <Link to={'/privacypolicy'}><u>Privacy Policy</u>.</Link> & <Link to={'/refundpolicy'}><u>Refund Policy</u>.</Link>
               </div>
               <div className="mt-3 text-center">
                 Already have an account? <Link to="/login">Login</Link>

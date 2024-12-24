@@ -4,8 +4,17 @@ import { Row } from "reactstrap";
 import PixelstarpSearch from "./PixelstarpSearch";
 import PaginationCard from "../Common/PaginationCard";
 import { FacilitySearchResultInitialState } from "../../../../../Types/Facility.type";
+import { SearchTabContentProp } from "../../../../../Types/SearchResult.type";
 
-export default function AllTab({ allFacilityResult, searchText }:FacilitySearchResultInitialState) {
+export interface ExtendedSearchTabContentProp extends FacilitySearchResultInitialState {
+    searchText: {
+        searchText: string;
+        capacity: string;
+        storageTypeId: string;
+    };
+}
+
+export default function AllTab({ allFacilityResult, searchText }:ExtendedSearchTabContentProp) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4; // Number of items per page
 
@@ -29,11 +38,14 @@ export default function AllTab({ allFacilityResult, searchText }:FacilitySearchR
         paginatedResults={paginatedResults}
         searchText={searchText}
       />
-      <PaginationCard
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      {
+        totalPages>1 &&   
+        <PaginationCard
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      }
     </Row>
   );
 }

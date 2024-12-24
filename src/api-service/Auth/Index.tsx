@@ -71,7 +71,6 @@ export async function sendSignUpOTP(request: RegisterRequest) {
   else{
       console.error('Error fetching :', error);
       toast.error(error.response.data.message)
-
   }
   }
 }
@@ -100,17 +99,16 @@ export async function verifyOTP(request: OTPRequest,navigate:any){
   }
 }
 
-export async function submitSignUp(request: RegistrationRequest,navigate:any){
+export async function submitSignUp(request: any,navigate:any){
   try {
+    debugger;
     const response = await axiosApi.post('user/createUser', request);
     console.log(response)
     if (response.status !== 200) {
       throw new Error(`Failed to verify OTP: ${response.status}`);
     }
     else{
-      const token = response.data.token;
-      localStorage.setItem('token', token);
-      // navigate(`${process.env.PUBLIC_URL}/dashboard/default`);
+       return response
     }
   } catch (error: any) {
     if(error.code==="ERR_NETWORK"){

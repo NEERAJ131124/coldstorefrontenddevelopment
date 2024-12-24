@@ -6,8 +6,8 @@ export default function HeaderLeft() {
 
     return (
         <div className="header-left">
-            <FullSearch/>
-            <SearchContainer/>
+            {/* <FullSearch/>
+            <SearchContainer/> */}
         </div>
     )
 }

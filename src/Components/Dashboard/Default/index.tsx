@@ -15,6 +15,9 @@ import GrowthCard from '../../../Utils/CommonComponents/CommonDashboard/CommonDe
 import TopUsers from './TopUsers'
 import NewsUpdate from './NewsUpdate'
 import MapPage from '../../Applications/Maps/Map.jsx'
+import SearchResult from '../../../Pages/Applications/SearchResult'
+import FacilityListNav from '../../Facility/FacilityList/FacilityListNav'
+import FacilityListTabContent from '../../Facility/FacilityList/FacilityListTabContent'
 
 export default function DefaultDashboard() {
     return (
@@ -22,6 +25,9 @@ export default function DefaultDashboard() {
             <Breadcrumbs pageTitle={DefaultDashboardTitle} parent={DashboardTitle} title={DefaultDashboardTitle}  />
             <Container className='default-dashboard' fluid>
                 <Row>
+                   <WelcomeBanner />
+                   <FacilityListTabContent activeTab={1}/>
+                    {/* <SearchResult/> */}
                     {/* <WelcomeBanner />
                     <EarningCard />
                     <JobCard />
@@ -34,7 +40,8 @@ export default function DefaultDashboard() {
                     <NewsUpdate />
                     <TotalInvest />
                     <ManageInvoice /> */}
-                    <MapPage/>
+                    {/* <MapPage/> */}
+
                 </Row>
             </Container>
         </>

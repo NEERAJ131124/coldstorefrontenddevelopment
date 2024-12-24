@@ -145,6 +145,44 @@ export const commonAccordionCardData = [
     },
 ];
 
+
+
+export const searchFilterAccordionCardData = [
+    {
+        id: 1,
+        heading: "Filter",
+        data: [
+            {
+                id: "chk-ani",
+                title: "Full-time (8688)",
+            },
+            {
+                id: "chk-ani1",
+                title: "Contract (503)",
+            },
+            {
+                id: "chk-ani2",
+                title: "Part-time (288)",
+            },
+            {
+                id: "chk-ani3",
+                title: "Internship (236)",
+            },
+            {
+                id: "chk-ani4",
+                title: "Temporary (146)",
+            },
+            {
+                id: "chk-ani5",
+                title: "Commission (25)",
+            },
+        ],
+        buttonTitle: "Find Facility",
+    },
+ 
+];
+
+
 export const jobDescriptionData = [
     {
         id: 1,
